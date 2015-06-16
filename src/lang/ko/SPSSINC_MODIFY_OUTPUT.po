@@ -1,0 +1,94 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2011
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-08 07:59+Mountain Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: modifyoutput.py:39
+msgid "SpssClient.StartClient failed."
+msgstr "SpssClient.StartClient가 실패했습니다."
+
+#: modifyoutput.py:78
+msgid "---"
+msgstr "---"
+
+#: modifyoutput.py:89
+msgid "Information"
+msgstr "정보"
+
+#: modifyoutput.py:147
+msgid "OUTLINETITLE cannot be combined with other outline criteria on IF"
+msgstr "IF에서 OUTLINETITLE을 다른 개요 기준과 결합할 수 없습니다."
+
+#: modifyoutput.py:149
+msgid "ITEMTITLE cannot be combined with other outline criteria on IF"
+msgstr "IF에서 ITEMTITLE을 다른 개요 기준과 결합할 수 없습니다."
+
+#: modifyoutput.py:151
+msgid "OUTLINETITLEREGEXP cannot be combined with start or end criteria on IF"
+msgstr "IF에서 OUTLINETITLEREGEXP를 시작 또는 끝 기준과 결합할 수 없습니다."
+
+#: modifyoutput.py:153
+msgid "ITEMTITLEREGEXP cannot be combined with start or end criteria on IF"
+msgstr "IF에서 ITEMTITLEREGEXP를 시작 또는 끝 기준과 결합할 수 없습니다."
+
+#: modifyoutput.py:156
+msgid "At least one item type or ALL must be specified"
+msgstr "하나 이상의 항목 유형이나 ALL을 지정해야 합니다."
+
+#: modifyoutput.py:159
+msgid "BREAKBEFORETITLES is ignored, because Title objects are not selected"
+msgstr "제목 개체가 선택되지 않았으므로 BREAKBEFORETITLES는 무시됩니다."
+
+#: modifyoutput.py:321
+msgid "Cannot combine ROMAN SEQUENCETYPE with nonnumeric start value"
+msgstr "ROMAN SEQUENCETYPE를 숫자 시작 값과 결합할 수 없습니다."
+
+#: modifyoutput.py:366
+msgid "Roman number sequence value must be between 1 and 5000"
+msgstr "로마 숫자 시퀀스 값은 1과 5000 사이여야 합니다."
+
+#: modifyoutput.py:412
+msgid "function reference not valid: %s"
+msgstr "함수 참조가 잘못되었습니다: %s"
+
+#: modifyoutput.py:416
+msgid "Import failure.  function: %s, module: %s"
+msgstr "가져오기 실패입니다. 함수: %s, 모듈: %s"
+
+#: modifyoutput.py:420
+msgid ""
+"Invalid custom function signature.\n"
+"Too few arguments: %s"
+msgstr ""
+"잘못된 사용자 정의 함수 서명입니다.\n"
+"인수가 너무 적음: %s"
+
+#: modifyoutput.py:445
+msgid "Invalid customfunction parameter expression: %s"
+msgstr "잘못된 customfunction 매개변수 표현식: %s"
+
+msgid "Messages"
+msgstr "메시지"
