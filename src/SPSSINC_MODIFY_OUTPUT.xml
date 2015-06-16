@@ -1,0 +1,84 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Jon Peck (SPSS Inc.) -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extension.xsd" Name="SPSSINC MODIFY OUTPUT" Language="Python">
+	<Subcommand Name="" IsArbitrary="True" Occurrence="Optional">
+		<Parameter Name="" ParameterType="TokenList">
+			<EnumValue Name="CHARTS"/>
+			<EnumValue Name="HEADINGS"/>
+			<EnumValue Name="LOGS"/>
+			<EnumValue Name="MODELS"/>
+			<EnumValue Name="NOTES"/>
+			<EnumValue Name="TABLES"/>
+			<EnumValue Name="TEXTS"/>
+			<EnumValue Name="TREES"/>
+			<EnumValue Name="WARNINGS"/>
+			<EnumValue Name="PAGETITLES"/>
+			<EnumValue Name="LWTABLES"/>
+			<EnumValue Name="LWNOTES"/>
+			<EnumValue Name="LWWARNINGS"/>
+			<EnumValue Name="ALL"/>
+		</Parameter>
+	</Subcommand>
+	<Subcommand Name="IF">
+		<Parameter Name="SUBTYPE" ParameterType="TokenList"/>
+		<Parameter Name="COMMAND" ParameterType="TokenList"/>
+		<Parameter Name="OUTLINETITLE" ParameterType="QuotedString"/>
+		<Parameter Name="OUTLINETITLESTART" ParameterType="QuotedString"/>
+		<Parameter Name="OUTLINETITLEREGEXP" ParameterType="QuotedString"/>
+		<Parameter Name="OUTLINETITLEEND" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLE" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLESTART" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLEREGEXP" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLEEND" ParameterType="QuotedString"/>
+		<Parameter Name="VISIBILITY" ParameterType="Keyword">
+			<EnumValue Name="TRUE"/>
+			<EnumValue Name="FALSE"/>
+			<EnumValue Name="ALL"/>
+		</Parameter>
+		<Parameter Name="PROCESS" ParameterType="Keyword">
+			<EnumValue Name="PRECEDING"/>
+			<EnumValue Name="ALL"/>
+		</Parameter>
+	</Subcommand>
+	<Subcommand Name="REPLACE">
+		<Parameter Name="OUTLINETITLE" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLE" ParameterType="QuotedString"/>
+		<Parameter Name="OUTLINETITLEREGEXP" ParameterType="QuotedString"/>
+		<Parameter Name="ITEMTITLEREGEXP" ParameterType="QuotedString"/>
+		<Parameter Name="SEQUENCESTART" ParameterType="TokenList"/>
+		<Parameter Name="SEQUENCETYPE" ParameterType="Keyword">
+			<EnumValue Name="ROMANUPPER"/>
+			<EnumValue Name="ROMANLOWER"/>
+		</Parameter>
+		<Parameter Name="ITEMS" ParameterType="LeadingToken"/>
+	</Subcommand>
+	<Subcommand Name="VISIBILITY">
+		<Parameter Name="VISIBLE" ParameterType="Keyword">
+			<EnumValue Name="FALSE"/>
+			<EnumValue Name="ASIS"/>
+			<EnumValue Name="DELETE"/>
+			<EnumValue Name="TRUE"/>
+		</Parameter>
+	</Subcommand>
+	<Subcommand Name="PAGEBREAKS">
+		<Parameter Name="BREAKBEFORETITLES" ParameterType="Keyword"/>
+		<Parameter Name="TITLELEVEL" ParameterType="Keyword"/>
+		<Parameter Name="FIRST" ParameterType="Keyword"/>
+	</Subcommand>
+	<Subcommand Name="CUSTOM">
+		<Parameter Name="FUNCTION" ParameterType="QuotedString"/>
+	</Subcommand>
+	<Subcommand Name="HELP" Occurrence="Optional"/>
+</Command>
