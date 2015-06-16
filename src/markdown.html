@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>SPSSINC MODIFY OUTPUT Extension Command</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<!-- rmarkdown v1 -->
+
+<h1>SPSSINC MODIFY OUTPUT Extension Command</h1>
+
+<p>Modify the outline, item titles, and visibility of objects in the Viewer</p>
+
+<p>SPSSINC MODIFY OUTPUT <em>itemtypes</em>  </p>
+
+<p>/IF COMMAND=<em>commands</em> SUBTYPE=<em>subtypes</em> VISIBILITY=TRUE<sup>&#42;</sup> or FALSE or ALL<br/>
+OUTLINETITLE=&ldquo;<em>title text</em>&rdquo;&ldquo; OUTLINETITLESTART=&rdquo;<em>text</em>&ldquo; OUTLINETITLEEND=&rdquo;<em>text</em>&ldquo;<br/>
+OUTLINETITLEREGEXP=&rdquo;<em>regular expression</em>&ldquo;<br/>
+ITEMTITLE=&rdquo;<em>titletext</em>&ldquo; ITEMTITLESTART=&rdquo;<em>text</em>&ldquo; ITEMTITLEEND=&rdquo;<em>text</em>&ldquo;<br/>
+ITEMTITLEREGEXP=&rdquo;<em>regular expression</em>&ldquo;<br/>
+PROCESS=PRECEDING<sup>&#42;&#42;</sup> or ALL</p>
+
+<p>/REPLACE OUTLINETITLE=&rdquo;<em>text</em>&ldquo; ITEMTITLE=&rdquo;<em>text</em>&ldquo;<br/>
+OUTLINETITLEREGEXP=&rdquo;<em>regular expression</em>&ldquo; ITEMTITLEREGEXP=&rdquo;<em>regular expression</em>&ldquo;<br/>
+SEQUENCESTART=&rdquo;<em>number or string</em>&ldquo; SEQUENCETYPE=ROMANUPPER or ROMANLOWER  </p>
+
+<p>/VISIBILITY VISIBLE=ASIS<sup>&#42;&#42;</sup> or FALSE or DELETE or TRUE  </p>
+
+<p>/PAGEBREAKS BREAKBEFORETITLES=TRUE or FALSE<sup>&#42;&#42;</sup> 
+TITLELEVEL=TOP<sup>&#42;&#42;</sup> or ANY<br/>
+FIRST=YES<sup>&#42;&#42;</sup> or NO</p>
+
+<p>/CUSTOM FUNCTION=&rdquo;<em>module.function</em>&ldquo; &hellip;</p>
+
+<p>/HELP.</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+
+<p>OUTPUT MODIFY /HELP displays this text and does nothing else.</p>
+
+<p>Examples:</p>
+
+<pre><code>SPSSINC MODIFY OUTPUT TABLES
+/IF SUBTYPE=&quot;custom table&quot;
+/REPLACE ITEMTEXT = &quot;Table \\0: \\1&quot;.
+
+SPSSINC MODIFY OUTPUT TEXTS
+/IF OUTLINETEXT=&quot;active dataset&quot;
+/VISIBILITY VISIBLE=FALSE.
+</code></pre>
+
+<p>Specify the item types to be modified.  Use ALL or one or more of
+CHARTS, HEADINGS, LOGS, NOTES, PAGE TITLES, TABLES, TEXTS, WARNINGS, 
+TITLES, TREES, MODELS.  For V19 or later, LWTABLES, LWNOTES, and
+LWWARNINGS can also be used.  These are ignored for earlier versions.</p>
+
+<h2>IF</h2>
+
+<p>The IF subcommand selects the particular instances of items to be modified.
+If a property does not apply to a particular item type, the property is ignored in filtering.</p>
+
+<p>The <strong>VISIBILITY</strong> keyword determines whether only visible items are processed 
+(the default), or only invisible items are processed, or all items are processed
+regardless of whether or not they are visible.  YES and NO are synonyms for
+TRUE and FALSE.</p>
+
+<p><strong>SUBTYPE</strong> is one or more OMS table subtypes and applies only to tables.
+It specifies which types of tables to process.
+You can find the table subtype by right clicking in the outline on an instance 
+or from <em>Utilities&gt;OMS Identifiers</em>.  The subtype name should be in quotes.
+Case and white space do not matter.  Multiple subtypes can be specified.
+Omit SUBTYPE to process all table types (if ALL or TABLES is specified).</p>
+
+<p><strong>COMMAND</strong> is a list of one or more commands whose output is to be processed.
+Multi-word command names must be enclosed in quotes.  The command name
+is the OMS identifier.  That can be found from Utilities&gt;OMS Identifiers or by
+right-clicking in the outline.</p>
+
+<p>Items can be filtered based on the outline text and, for text, titles, 
+and table items, on the item title that appears in the right pane of the Viewer.
+All of these criteria are case insensitive.  Text should be in quotes.
+Titles can be specified as whole items - <strong>OUTLINETITLE</strong>, <strong>ITEMTITLE</strong>, 
+or by their starting or ending text - <strong>OUTLINETITLESTART</strong>, <strong>ITEMTITLESTART</strong>, 
+<strong>OUTLINETITLEEND</strong>, <strong>ITEMTITLEEND</strong>.</p>
+
+<p>In addition, you can use powerful regular expressions both for filtering and for 
+transforming titles with <strong>OUTLINETITLEREGEXP</strong> and <strong>ITEMTITLEREGEXP</strong>.
+Regular expressions are not explained here.
+One reference is <a href="http://www.amk.ca/python/howto/regex">http://www.amk.ca/python/howto/regex</a>.</p>
+
+<p>You can use only one type of title filtering for each of the outline and item text.
+For text objects, the item title is considered to be the text of the item.
+If an item has html or rtf formatting applied, the formatting is ignored when selecting.</p>
+
+<p>By default, the immediately preceding procedure output is processed.  Specify
+<strong>PROCESS</strong>=ALL to process all existing items in the Viewer according to the 
+selection criteria.</p>
+
+<h2>REPLACE</h2>
+
+<p>The REPLACE subcommand is used to modify the title text of the selected objects.
+Use <strong>OUTLINETITLE</strong> and <strong>ITEMTITLE</strong> to change the text or
+<strong>OUTLINEREGEXP</strong> and <strong>ITEMREGEXP</strong> to apply a regular expression substitution.</p>
+
+<p>When specifying OUTLINETITLE and ITEMTITLE replacement text, you can use 
+<code>\\1</code> to stand for the old text.  For example, if an item has title &quot;Descriptive Statistics&rdquo;
+<code>ITEMTITLE=&quot;Table: \\1&quot;</code>
+would result in
+&ldquo;Table: Descriptive Statistics&rdquo;</p>
+
+<p>For text , title, and page title objects, you can include HTML or RTF formatting in the replacement 
+item text.  For example,<br/>
+<code>ITEMTITLE=&quot;&lt;html&gt;&lt;i&gt;Table:&lt;/i&gt; \\1&lt;/html&gt;&quot;</code><br/>
+would put &ldquo;Table:&rdquo; in italics.
+This does not apply to pivot table titles.  The <code>\\1</code> text does NOT include 
+any existing formatting.</p>
+
+<p>You can sequentially number or letter the selected items by including <code>\\0</code> in the 
+replacement text where the number should appear.</p>
+
+<p>Use <strong>SEQUENCESTART</strong>=value to set the initial value.  If value is a number, the selected
+objects are numbered.  If the value is a quoted letter or letters (up to 4), the sequencing 
+is by letters matching the case of the first character.  For example, 
+<code>SEQUENCESTART=&quot;A&quot;</code>
+would result in the sequence
+A, B, &hellip;, Z, AA, AB,&hellip;
+<strong>SEQUENCETYPE</strong>=ROMANUPPER or ROMANLOWER can be used to produce
+sequence numbers in roman numerals.  SEQUENCESTART must be numeric
+in this case.</p>
+
+<p>The sequence  value is incremented for each selected item except for the first
+item after a TITLE (unless it is another title).  Selecting TITLES and TABLES
+is often a good choice for numbering.</p>
+
+<p>Regular expression substitution can be carried out with <strong>OUTLINETITLEREGEXP</strong> and
+<strong>ITEMTITLEREGEXP</strong>.  Parenthesized groups are numbered according to the regexp 
+specified on the IF subcommand, so you can rearrange the text at will.  If a regular 
+expression was not used for selection, the
+entire old text, without formatting, is considered to be group 1 and can be referenced
+as <code>\1</code> in the replacement expression.</p>
+
+<h2>VISIBILITY</h2>
+
+<p>You can set the visibility of selected items with the VISIBILITY subcommand.
+VISIBILITY=DELETE is the ultimate invisibility as it removes the selected items completely.  FALSE hides the item and TRUE shows it.
+In order to show hidden items, you need to have included them via
+the IF VISIBILITY keyword.
+This subcommand is an action specification not to be confused with
+the VISIBILITY keyword that is a selection specification.</p>
+
+<p>If an item is being deleted, any customfunction specification for it is ignored.</p>
+
+<h2>PAGEBREAKS</h2>
+
+<p>If <strong>BREAKBEFORETITLES</strong> is True, a page break will be generated immediately before
+each selected title.  If title objects are not selected, no breaks will be created.  Titles
+can be top level or any.  If <strong>FIRST</strong>=NO, the page break is not applied
+to the first item where it would otherwise be applied.</p>
+
+<h2>CUSTOM</h2>
+
+<p>Small custom functions written in Python can be invoked by this command on
+the selected objects.  One or more such functions can be specified
+on this subcommand.  If there are no parameters, specify the module
+and function names in quotes.  E.g.,</p>
+
+<p><code>/CUSTOM FUNCTION=&quot;modulename.functionname&quot;</code></p>
+
+<p>Functions can have named parameters.  Note the use of opposite style quotes
+when a string value is specified.  E.g.,</p>
+
+<p><code>/CUSTOM FUNCTION=&quot;modulename.functionname(p1=1, p2=&#39;two&#39;)&quot;.</code></p>
+
+<p>The customoutputfunctions.py module included with this command contains
+the following custom functions.  Open the module in a plain text editor
+to see usage details.</p>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>aligntitle</td>
+<td>left align a table title</td>
+</tr>
+<tr>
+<td>breakbeforeitem</td>
+<td>insert page break before selected item</td>
+</tr>
+<tr>
+<td>excelexport</td>
+<td>export selected items to Excel</td>
+</tr>
+</tbody></table>
+
+<h2>WRITING CUSTOM FUNCTIONS</h2>
+
+<p>You can write Python functions with or without user-specified parameters
+to be invoked on the selected objects.</p>
+
+<p>The function will be passed the output item as the first parameter.</p>
+
+<p>Custom functions can have user-specified parameters written in Python notation.  For example,</p>
+
+<p><code>&quot;myfuncs.decorate(p1=100, p2=&#39;xyz&#39;)&quot;</code></p>
+
+<p>specifies parameters p1 and p2 with values 100 and &#39;xyz&#39;.  Parameters are passed as a dictionary
+as the second argument to the function, which must be named &ldquo;custom&rdquo;.<br/>
+A special parameter named <strong>FIRST</strong> is always
+included and set initially to True.</p>
+
+<p>Following is an example of a custom function that prints the title text and
+the parameter values</p>
+
+<pre><code>def echoNameAndParms(obj, custom):
+    &#39;obj is the current item, and parms are the custom parameters&#39;
+
+    try:
+        print obj.GetSpecificType().GetTextContents()
+        for key, value in custom.items():
+            print key, value
+    except:
+        pass
+
+</code></pre>
+
+<p>&copy; Copyright IBM Corp. 1989, 2014</p>
+
+</body>
+
+</html>
+
