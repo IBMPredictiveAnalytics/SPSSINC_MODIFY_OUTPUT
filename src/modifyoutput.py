@@ -3,7 +3,7 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2012
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -11,7 +11,7 @@
 
 "implementation of SPSSINC MODIFY OBJECTS"
 
-from __future__ import with_statement
+
 
 __version__ = '1.3.1'
 __author__ = "SPSS, JKP"
@@ -63,17 +63,17 @@ class ClientSession(object):
 # structure will be valid in earlier releases even though these types will not occur
 
 itemtypes = dict([
-        (SpssClient.OutputItemType.CHART, "charts"),
-        (SpssClient.OutputItemType.HEAD, "headings"),
-        (SpssClient.OutputItemType.LOG, "logs"),
-        (SpssClient.OutputItemType.NOTE, "notes"),
-        (SpssClient.OutputItemType.PIVOT, "tables"),
-        (SpssClient.OutputItemType.TEXT, "texts"),
-        (SpssClient.OutputItemType.WARNING, "warnings"),
-        (SpssClient.OutputItemType.TITLE, "titles"),
-        (SpssClient.OutputItemType.TREEMODEL, "trees"),
-        (SpssClient.OutputItemType.PAGETITLE, "pagetitles"),
-        (SpssClient.OutputItemType.MODEL, "models")])
+        (SpssClient.OutputItemType.CHART.numerator, "charts"),
+        (SpssClient.OutputItemType.HEAD.numerator, "headings"),
+        (SpssClient.OutputItemType.LOG.numerator, "logs"),
+        (SpssClient.OutputItemType.NOTE.numerator, "notes"),
+        (SpssClient.OutputItemType.PIVOT.numerator, "tables"),
+        (SpssClient.OutputItemType.TEXT.numerator, "texts"),
+        (SpssClient.OutputItemType.WARNING.numerator, "warnings"),
+        (SpssClient.OutputItemType.TITLE.numerator, "titles"),
+        (SpssClient.OutputItemType.TREEMODEL.numerator, "trees"),
+        (SpssClient.OutputItemType.PAGETITLE.numerator, "pagetitles"),
+        (SpssClient.OutputItemType.MODEL.numerator, "models")])
 try:
         itemtypes[SpssClient.OutputItemType.LIGHTPIVOT] = "lwtables"
         itemtypes[SpssClient.OutputItemType.LIGHTNOTE] = "lwnotes"
@@ -131,7 +131,7 @@ for argument definitions."""
                         itemkt = items.Size()
                         start = 1  #do not process the root
                         if process == "preceding":   # work back until level 1 item found, ignoring logs.
-                                for i in xrange(itemkt-1, 0, -1):
+                                for i in range(itemkt-1, 0, -1):
                                         item = items.GetItemAt(i)
                                         if item.GetType() == SpssClient.OutputItemType.LOG:
                                                 itemkt -= 1
@@ -381,7 +381,7 @@ class Incrementer(object):
                         if self.sequencetype.startswith("roman"):
                                 return roman(retvalue, case=self.romancase).result
                         else:
-                                return unicode(retvalue)
+                                return str(retvalue)
                 else:
                         retvalue = []
                         for i in range(4):
@@ -432,7 +432,7 @@ def attributesFromDict(d):
         # based on Python Cookbook, 2nd edition 6.18
 
         self = d.pop('self')
-        for name, value in d.iteritems():
+        for name, value in list(d.items()):
                 setattr(self, name, value)
 
 def resolvestr(afunc):
@@ -453,7 +453,7 @@ def resolvestr(afunc):
                 if len(bf) != 2:
                         raise ValueError(_("function reference not valid: %s") % f)
                 try:
-                        exec "from %s import %s as customfunction" % (bf[0], bf[1])
+                        exec("from %s import %s as customfunction" % (bf[0], bf[1]))
                 except:
                         raise ImportError(_("Import failure.  function: %s, module: %s") % (bf[1], bf[0]))
                 argspec = inspect.getargspec(customfunction)[0]
@@ -483,8 +483,8 @@ def factor(afunc):
         params["_designatedOutput"] = desout
         # basic sanity check for parameter expression
         if '(' in f or ')' in f or '=' in f or ',' in f:
-                if not isinstance(afunc, unicode):
-                        afunc = unicode(afunc, locale.getlocale()[1])
+                if not isinstance(afunc, str):
+                        afunc = str(afunc, locale.getlocale()[1])
                 raise ValueError(_("Invalid customfunction parameter expression: %s") % afunc)
         return f, params
 
@@ -554,7 +554,7 @@ def _isseq(obj):
 
         Will be False if obj is a string or basic data type"""
 
-        if isinstance(obj, basestring):
+        if isinstance(obj, str):
                 return False
         else:
                 try:

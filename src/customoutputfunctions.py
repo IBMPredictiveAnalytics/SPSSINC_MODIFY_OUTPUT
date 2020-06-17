@@ -1,7 +1,7 @@
 # custom functions for use with SPSSINC MODIFY OUTPUT extension command
 #Licensed Materials - Property of IBM
 #IBM SPSS Products: Statistics General
-#(c) Copyright IBM Corp. 2011, 2013
+#(c) Copyright IBM Corp. 2011, 2020
 #US Government Users Restricted Rights - Use, duplication or disclosure 
 #restricted by GSA ADP Schedule Contract with IBM Corp.
 
@@ -125,7 +125,7 @@ def excelexport(obj, custom):
         custom["location"] = custom.get("location", "OverwriteAtCellRef")
         custom["startingCell"] = custom.get("startingCell", "A1")
         image = custom.get("image", "jpg")
-        if not image in imagekwds.keys():
+        if not image in list(imagekwds.keys()):
             raise ValueError(_("""Invalid image format: %s""" % image))
         custom["image"] = imagekwds[image]
         
