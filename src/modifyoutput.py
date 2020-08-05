@@ -63,21 +63,21 @@ class ClientSession(object):
 # structure will be valid in earlier releases even though these types will not occur
 
 itemtypes = dict([
-        (SpssClient.OutputItemType.CHART.numerator, "charts"),
-        (SpssClient.OutputItemType.HEAD.numerator, "headings"),
-        (SpssClient.OutputItemType.LOG.numerator, "logs"),
-        (SpssClient.OutputItemType.NOTE.numerator, "notes"),
-        (SpssClient.OutputItemType.PIVOT.numerator, "tables"),
-        (SpssClient.OutputItemType.TEXT.numerator, "texts"),
-        (SpssClient.OutputItemType.WARNING.numerator, "warnings"),
-        (SpssClient.OutputItemType.TITLE.numerator, "titles"),
-        (SpssClient.OutputItemType.TREEMODEL.numerator, "trees"),
-        (SpssClient.OutputItemType.PAGETITLE.numerator, "pagetitles"),
-        (SpssClient.OutputItemType.MODEL.numerator, "models")])
+        (SpssClient.OutputItemType.CHART.name, "charts"),
+        (SpssClient.OutputItemType.HEAD.name, "headings"),
+        (SpssClient.OutputItemType.LOG.name, "logs"),
+        (SpssClient.OutputItemType.NOTE.name, "notes"),
+        (SpssClient.OutputItemType.PIVOT.name, "tables"),
+        (SpssClient.OutputItemType.TEXT.name, "texts"),
+        (SpssClient.OutputItemType.WARNING.name, "warnings"),
+        (SpssClient.OutputItemType.TITLE.name, "titles"),
+        (SpssClient.OutputItemType.TREEMODEL.name, "trees"),
+        (SpssClient.OutputItemType.PAGETITLE.name, "pagetitles"),
+        (SpssClient.OutputItemType.MODEL.name, "models")])
 try:
-        itemtypes[SpssClient.OutputItemType.LIGHTPIVOT] = "lwtables"
-        itemtypes[SpssClient.OutputItemType.LIGHTNOTE] = "lwnotes"
-        itemtypes[SpssClient.OutputItemType.LIGHTWARNING] = "lwwarnings"
+        itemtypes[SpssClient.OutputItemType.LIGHTPIVOT.name] = "lwtables"
+        itemtypes[SpssClient.OutputItemType.LIGHTNOTE.name] = "lwnotes"
+        itemtypes[SpssClient.OutputItemType.LIGHTWARNING.name] = "lwwarnings"
 except:   # these items undefined if version < 19
         pass
 
@@ -207,7 +207,7 @@ class ItemFilter(object):
                 If there are no criteria, every item (of the appropriate type) will be selected.
                 This is not related to an item's selected state in the Viewer."""
 
-                itemtype = itemtypes.get(item.GetType(), "")
+                itemtype = itemtypes.get(item.GetType().name, "")
                 # item type screen
                 if not self.all and not itemtype in self.types:
                         return False
@@ -453,10 +453,11 @@ def resolvestr(afunc):
                 if len(bf) != 2:
                         raise ValueError(_("function reference not valid: %s") % f)
                 try:
-                        exec("from %s import %s as customfunction" % (bf[0], bf[1]))
+                        exec("from %s import %s" % (bf[0], bf[1]))
+                        customfunction = locals()[bf[1].strip()]
                 except:
                         raise ImportError(_("Import failure.  function: %s, module: %s") % (bf[1], bf[0]))
-                argspec = inspect.getargspec(customfunction)[0]
+                argspec = inspect.getfullargspec(customfunction)[0]
                 nargs = len(argspec)
                 if nargs < 1 or nargs > 2:
                         raise ValueError(_("Invalid custom function signature.\nToo few arguments: %s") % ", ".join(argspec))
