@@ -13,7 +13,7 @@
 
 
 
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 __author__ = "SPSS, JKP"
 
 # Note: This module requires at least SPSS 17.0.0
@@ -475,7 +475,7 @@ def factor(afunc):
 
         mo = re.match(r"([^(]+)(\(.+\)$)", afunc)
         if not mo is None:       # parameters found, make a dictionary of them
-                params = eval("dict" + mo.group(2) )
+                params = eval("dict" + mo.group(2).replace(r"\u", "/u"))
                 f = mo.group(1)
         else:
                 params = {}
