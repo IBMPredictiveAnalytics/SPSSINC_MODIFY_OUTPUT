@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Modyfikuj tytuły wyników</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Modyfikuj tytuły wyników</h1>
+Użyj tego okna dialogowego w celu zmodyfikowania tytułów i/lub tekstu określonych pozycji w strukturze w oknie raportu, a także tytułów lub tekstów pozycji. Można również zmienić ich widoczność.  Typy pozycji do przetworzenia i kryteria wyboru można określić w głównym oknie dialogowym, a działania, które mają być zastosowane, w podrzędnym oknie dialogowym <i> Działania</i>.
+Działania są stosowane do wskazanego okna raportu.
+<p>
+Wybierz co najmniej jeden typ pozycji do przetworzenia.  Większość z nich jest oczywista.
+Nagłówki to pozycje struktury, które mają pod sobą elementy podrzędne.
+Tytuły to tytuły rzeczywistych pozycji.  Nie wszystkie tytuły pozycji mogą być modyfikowane za pomocą tej komendy.  W szczególności nie można zmienić tytułów pozycji Wykresy, Modele i Drzewa.  Można jednak zmienić ich tekst struktury.
+<p>
+Domyślnie komenda przetwarza wyniki bezpośrednio poprzedzającej procedury (ignorując kolejne pozycje dziennika).
+Można zmienić działanie tej komendy w celu przetwarzania całej bieżącej zawartości okna raportu.
+<p>
+Przetwarzane są tylko widoczne pozycje.  Wybrane pozycje można ukryć, wybierając
+opcję <i>Ukryj</i> w podrzędnym oknie dialogowym Działania.
+<h2>Kryterium filtrujące</h2>
+Można ograniczyć przetwarzane elementy, określając wartość w co najmniej jednym
+z następujących pól: Komenda, Podtyp tabeli, Kryteria tytułu struktury i Kryteria tytułu pozycji.
+Pola, które nie mają zastosowania do danego typu obiektu są ignorowane przy określaniu wyboru.  Modyfikowane są wyłącznie pozycje spełniające wszystkie obowiązujące kryteria.
+<p>
+Pola <i>Komenda</i> i <i>Podtyp tabeli</i> odnoszą się do identyfikatorów IMS pozycji.  Można je znaleźć, klikając wpis struktury przykładu prawym przyciskiem myszy lub w obszarze <i>Narzędzia>Identyfikatory OMS</i>.
+<P>
+Pola <i>Kryteria tytułu struktury</i> i <i>Kryteria tekstu pozycji</i> można określić jako dokładne dopasowania (ignorując wielkość liter) lub przez tekst początkowy lub końcowy.  Można również użyć wyrażenia regularnego, które umożliwia ogólne określenie wzorca.
+W tej części nie omówiono wyrażeń regularnych.  Jedno z przydatnych
+źródeł: http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Podrzędne okno dialogowe Działania</h2>
+Kliknij przycisk <i>Działania</i>, aby określić działanie, które ma zostać wykonane na wybranych pozycjach.
+Jeśli nie określono żadnego działania, komenda nie przyniesie żadnego efektu.
+<h3>Zastępowanie tekstu</h3>
+Można wprowadzić nowy tekst dla struktury i/lub tytułu pozycji lub tekst w grupach <i>Tekst struktury</i> i <i>Tekst pozycji</i>.  Może to być dosłowny tekst zastępujący starą treść lub może to być zastępcze wyrażenie regularne.
+<p>
+W nowym tekście można odwoływać się do starego tekstu, a także można uwzględnić kolejny numer lub kolejną literę.  Kolejny numer lub kolejna litera są reprezentowane przez "\\0", stary tekst przez "\\1".  Na przykład w celu
+dodania kolejnego numeru do starego tytułu można wprowadzić tekst
+<br>
+Tabela \\0: \\1<br>
+Notacji \\0 można użyć również w wyrażeniu regularnym.
+<p>
+W tekście zastępującym można użyć notacji formatowania html lub rtf.  Na przykład,<br>
+&lt;html&gt; Tekst &lt;i&gt;Nowy&lt;/i&gt; Tytuł<br>
+spowodowałoby, że słowo "Nowy" byłoby wyświetlane kursywą.
+<p>W kryteriach wyboru informacje o formatowaniu są
+ignorowane.  Dyrektywa \\1 również pomija informacje o formatowaniu.
+<p>
+Jeśli w wyrażeniu regularnym wyboru użyto nawiasów
+można użyć \n odwołań do tych grup, gdzie n jest numerem grupy.  Jeśli do wyboru użyto
+wyrażenia regularnego, stary tytuł jest traktowany jako grupa 1.
+<h3>Numeracja kolejności</h3>
+Wartość wykorzystywana do określania kolejności może być cyfrą, literą lub cyfrą rzymską.  Zaznacz
+pole <i>Pozycje liczbowe lub literowe</i> w celu dokonania wyboru.
+Domyślnie wybrany jest styl liczbowy, który rozpoczyna się od cyfry 1.  Można wprowadzić inną wartość początkową.  Jeśli jest to jedna litera lub większa liczba liter (maksymalnie cztery), kolejność będzie wskazywana przez litery odpowiadające wielkości pierwszej litery.
+Jeśli wybrano jeden z przycisków z cyframi rzymskimi, kolejność będzie wskazywana przez cyfry rzymskie.  W takim przypadku wartość początkowa, jeśli jest wprowadzana, musi być liczbowa.
+<p>W celu uzyskania wartości kolejności należy zaznaczyć pole wyboru <i>Pozycje liczbowe lub literowe</i> oraz uwzględnić
+wartość \\0 w tekście struktury lub pozycji.
+<h3>Wstawianie podziałów stron</h3>
+Jeśli wybrano opcję <i>Tytuły</i> w grupie <i>Obiekty wynikowe </i> w głównym oknie dialogowym, przed każdym tytułem, który spełnia kryteria wyboru, można wstawić podział strony.  Zaznaczyć pole wyboru
+<i>Podziały strony</i>.  Domyślnie ma to zastosowanie tylko do tytułów na poziomie struktury, wciętych o jeden poziom pod nagłówkiem procedury.  Wybrać przycisk <i>Wszystkie</i>, aby podziały stron były stosowane
+do wszystkich obiektów tytułów na wszystkich poziomach struktury.
+<h3>Funkcje niestandardowe</h3>
+Programiści Pythona i ich współpracownicy mogą skonfigurować niestandardową
+funkcję która ma być wywoływana dla każdego wybranego obiektu.  Może to zaoszczędzić
+czas przeznaczany na pisanie kodu w celu nawigacji do odpowiednich pozycji.  Wprowadź
+funkcję, która będzie stosowana jako<br>
+<i>module name.function name</i><br>
+<p>Funkcje niestandardowe mogą mieć parametry.  W celu określenia co najmniej jednego parametru
+podaj listę parametrów w cudzysłowie i zapisz nazwy i wartości parametrów.
+Na przykład,<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+spowoduje to wywołanie funkcji <i>writeitemtitles</i> w module <i>myfunctions</i>.
+Zapoznaj się z dokumentacją każdej konkretnej funkcji niestandardowej, aby dowiedzieć się jakie parametry są akceptowane.  Nazwy parametrów muszą być zapisane literami, zgodnie z definicją funkcji.
+<p>Jeśli wartość parametru jest łańcuchowa, należy zapisać ją w pojedynczych cudzysłowach np.<br>
+<i>option='both'</i>
+<br>
+
+<h2>Funkcje dodatkowe</h2>
+<p>
+To okno dialogowe generuje składnię komendy dla komendy rozszerzającej SPSSINC MODIFY TABLES. Aby wyświetlić pomoc dotyczącą tej komendy, uruchom następującą komendę:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+Składnia komend umożliwia:
+<ul>
+<li>Określenie listy komend do wyboru</li>
+<li>Określenie listy podtypów tabel</li>
+<li>Przetwarzanie widocznych, niewidocznych lub wszystkich pozycji raportu</li>
+<li>Usuwanie wybranych pozycji zamiast ich ukrywania</li>
+</ul>
+<h2>Wymagania</h2>
+<p>
+To okno dialogowe wymaga zainstalowania wtyczki integracyjnej dla języka Python oraz komendy rozszerzającej SPSSINC MODIFY TABLES.
+Dla wersji programu IBM SPSS Statistics 19 i wyższej, wtyczka i komenda rozszerzająca są zainstalowane z pakietem Essentials dla języka Python. W celu uzyskania dalszych informacji, patrz temat W jaki sposób pobrać
+wtyczki integracyjne, wybierając opcję System główny > Często zadawane pytania w systemie pomocy IBM SPSS Statistics. Jeśli komenda rozszerzająca SPSSINC MODIFY TABLES została pobrana z serwisu Developer Central, należy postępować zgodnie z instrukcjami w odpowiednim pliku readme.
+</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

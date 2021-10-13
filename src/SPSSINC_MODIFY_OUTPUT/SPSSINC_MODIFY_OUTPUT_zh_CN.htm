@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+
+  <title>修改输出标题</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>修改输出标题</h1>
+使用此对话框可以修改查看器大纲窗格中的标题和/或文本以及项本身的标题或文本。您还可以更改其可视性。您可以指定要处理的项类型以及主对话框中的选择条件以及要在<i>操作</i>子对话框中应用的操作。
+操作将应用于指定的查看器窗口。
+<p>
+选择一个或多个要处理的项类型。大部分都是不言自明的。
+标题是其下方有子代的大纲项。
+题目是实际项的题目。并非所有项都有可由此命令修改的题目。尤其是，无法更改图表、模型和树项题目。但是，可以更改其大纲文本。
+<p>
+缺省情况下，此命令处理来自紧邻的先前过程的输出（忽略中间的日志项）。您可以将其更改为处理查看器的所有当前内容。
+<p>
+将仅处理可视项。您可以通过在“操作”子对话框中选择<i>隐藏</i>来隐藏选定项。
+<h2>选择条件</h2>
+您可以通过指定“命令”、“表子类型”、“大纲标题条件”和“项标题条件”中的一个或多个来限制处理的项。
+在确定选择时将忽略不适用于特定对象类型的字段。将仅修改满足所有适用条件的项。
+<p>
+<i>命令</i>和<i>表子类型</i>字段对应于项的 OMS 标识。您可以通过右键单击示例的大纲条目或从<i>实用程序 > OMS 标识</i>来查找这些内容。
+<P>
+<i>大纲标题条件</i>和<i>项文本条件</i>可指定为完全匹配（忽略大小写），或者按起始或结束文本匹配。您还可以使用正则表达式，这是描述模式的一般方式。
+正则表达式不在此处进行解释。一个有用的资料来源是 http://www.amk.ca/python/howto/regex。
+<p>
+<h2>操作子对话框</h2>
+单击<i>操作</i>按钮以指定要对选定项执行的操作。
+如果在“操作”中未指定任何内容，该命令将保持静默，不执行任何操作。
+<h3>替换文本</h3>
+您可以在<i>大纲文本</i>和<i>项文本</i>组中为大纲和/或项标题或文本输入新文本。这可以是用于替换旧内容的字面值文本，也可以是替换正则表达式。
+<p>
+在新文本中，可以引用旧文本，并且可以包含序号或字母。序号或字母由 "\\0" 表示，旧文本由 "\\1" 表示。例如，要将序号添加到旧标题，您可以输入
+<br>
+表 \\0: \\1<br>
+您还可以在正则表达式中使用 \\0 表示法。
+<p>
+您可以在替换文本中使用 html 或 rtf 格式化表示法。例如，<br>
+&lt;html&gt;&lt;i&gt;新&lt;/i&gt;标题<br>
+会导致“新”以斜体样式显示。
+<p>在选择条件中，将忽略格式化信息。\\1 伪指令也会省略格式化信息。
+<p>
+如果在选择正则表达式中使用了括号，那么可以使用对这些组的 \n 引用，其中 n 是组号。如果没有使用正则表达式进行选择，那么旧标题被视为组 1。
+<h3>序列编号</h3>
+序列值可以是数字、字母或罗马数字。选中<i>数字或字母项</i>框以进行选择。缺省情况下，样式为数字，从 1 开始。您可以输入不同的起始值。如果是一个或多个字母（最多 4 个字母），那么序列将是与第一个字母的大小写匹配的字母。
+如果您选中其中一个罗马数字按钮，该序列将以罗马数字表示。在此情况下，如果输入起始值，该值必须是数字。
+<p>为了获取序列值，您必须同时选中<i>数字或字母项</i>框并在大纲或项文本中包含 \\0。
+<h3>插入分页符</h3>
+如果在主对话框上的<i>输出对象</i>组中选择<i>标题</i>，那么可以在符合选择条件的每个标题前面插入分页符。选中<i>分页符</i>框。缺省情况下，仅大纲级别在过程标题下缩进一个级别的题目会受到影响。设置<i>全部</i>按钮以在所有大纲级别的标题对象上设置中断。<h3>定制函数</h3>
+Python 程序员及其朋友可以指定要为每个选定对象调用的定制函数。这样就不用编写代码来浏览到相应的项。将要应用的函数输入为<br>
+<i>模块名称.函数名称</i><br>
+<p>定制函数可以有参数。要指定一个或多个参数，请将参数列表括在圆括号内，并编写参数名称和值。
+例如，<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+将调用 <i>myfunctions</i> 模块中的函数 <i>writeitemtitles</i>。
+请查阅任何特定定制函数的文档以了解它接受的参数。参数名称必须按函数定义中所指定的大小写进行书写。
+<p>如果参数值是字符串，请将其括在单引号内，例如：<br>
+<i>option='both'</i>
+<br>
+
+<h2>其他功能部件</h2>
+<p>
+此对话框将生成 SPSSINC MODIFY TABLES 扩展命令的语法。要显示此命令的帮助，请运行以下语法：</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP。</p>
+命令语法允许您：<ul>
+<li>指定用于选择的命令的列表</li>
+<li>指定表子类型的列表</li>
+<li>处理可视、不可视或所有输出项</li>
+<li>删除选定项，而不是仅仅将其隐藏</li>
+</ul>
+<h2>要求</h2>
+<p>
+此对话框需要 Integration Plug-In for Python 和 SPSSINC MODIFY TABLES 扩展命令。对于 IBM SPSS Statistics 19 及更高版本而言，此 Plug-In 和扩展命令随
+Essentials for Python 程序包一起安装。有关更多信息，请参阅“IBM SPSS Statistics
+帮助”系统的“核心系统”>“常见问题”中的“如何获取集成插件”。如果您是从 SPSS Community 下载 SPSSINC MODIFY TABLES，请按相关自述文件中的指示信息执行操作。</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

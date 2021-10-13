@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>Modify Output Titles</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:110%; }
+BODY {font-family:Verdana, Arial, sans-serif;font-size:80%; }
+TABLE {font-size:100%;font-family:Verdana, Arial, sans-serif;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph { font-family: Arial, Helvetica, sans-serif; }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;font-family:"courier new",monospace; }
+
+/* inline tags */
+.code {font-family: Courier,fixed pitch;}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {font-family: Symbol}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Modify Output Titles</h1>
+Use this dialog to modify the titles and/or text in the Viewer outline
+pane and the titles or text of the items themselves.  You can also
+alter their visibility.  You specify
+the types of items to process and the selection criteria in the main
+dialog and the actions to be applied in the <i>Actions</i> subdialog.
+The operations are applied to the designated Viewer window.
+<p>
+Choose one or more item types to process.  Most are self evident.
+Headings are the outline items that have children underneath them.
+Titles are the titles of the actual items.  Not all items have
+titles that can be modified by this command.  In particular,
+Charts, Models, and Trees item titles cannot be changed.  However,
+their outline text can be.
+<p>
+By default, the command processes the output from the immediately
+preceding procedure (ignoring intervening Log items).
+You can change that to process all of the Viewer's current contents.
+<p>
+Only visible items are processed.  You can hide the selected items
+by choosing  <i>Hide</i> in the Actions subdialog.
+<h2>Selection Criteria</h2>
+You can limit the items processed by specifying one or more of
+the Command, Table Subtype, Outline Title Criteria,  and Item Title Criteria.
+Fields that do not apply to a particular object type are ignored
+in determining selection.  Only items satisfying all of the applicable
+criteria are modified.
+<p>
+<i>Command</i> and <i>Table Subtype</i> fields correspond to the OMS identifiers
+for the items.  You can find these by right clicking on the outline
+entry of an example or from <i>Utilities>OMS Identifiers</i>.
+<P>
+The <i>Outline Title Criteria</i> and <i>Item Text Criteria</i> can be specified as exact matches (ignoring case)
+or by the starting or ending text.  You can also use a regular
+expression, which is a general way of describing a pattern.
+Regular expressions are not explained here.  One useful source
+is http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Actions Subdialog</h2>
+Click the <i>Actions</i> button to specify what to do to the selected items.
+If nothing is specified in Actions, the command will silently do nothing.
+<h3>Replacing Text</h3>
+You can enter new text for the outline and/or the item title
+or text in the <i>Outline Text</i> and <i>Item Text</i> groups.  It can be literal
+text to replace the old contents, or it can be a replacement
+regular expression.
+<p>
+In the new text, you can refer to the old text, and you can
+include a sequence number or letter.  The sequence number or letter is
+represented by "\\0" and the old text by "\\1".  For example,
+to add a sequence number to the old title, you could enter
+<br>
+Table \\0: \\1<br>
+You can use the \\0 notation in a regular expression as well.
+<p>
+You can use html or rtf formatting notation in the replacement
+text.  For example,<br>
+&lt;html&gt;The &lt;i&gt;New&lt;/i&gt; Title<br>
+would cause "New" to appear in italic style.
+<p>In the selection criteria, the formatting information is
+ignored.  The \\1 directive also omits formatting information.
+<p>
+If you used parentheses in the selection regular
+expression, you can use \n references to these groups, where n is the group number.  If no
+regular expression was used for selection, the old title is
+considered group 1.
+<h3>Sequence Numbering</h3>
+The sequence value can be a number, letters, or roman numerals.  Check
+the <i>Number or letter items</i> box to choose.
+By default, styles are numeric and start at 1.  You can enter a different
+starting value.  If it is one or more letters (up to four), the sequence will be
+letters matching the case of the first letter.
+If you check one of the roman numeral buttons, the sequence will be
+in roman numbers.  The starting value, if entered, must be numeric
+in this case.
+<p>In order to get sequence values, you must both check the <i>Number or letter items</i> box
+and include \\0 in the outline or item text.
+<h3>Inserting Page Breaks</h3>
+If you select <i>Titles</i> in the <i>Output Objects</i> group on the main dialog, you can insert a page break
+in front of each title that fits the selection criteria.  Check the
+<i>Page Breaks</i> box.  By default, only titles at the outline level indented
+one level under a procedure heading are affected.  Set the <i>All</i> button to set breaks on
+title objects at all outline levels.
+<h3>Custom Functions</h3>
+Python programmers and their friends can specify a custom function
+to be called for each selected object.  This can save writing
+the code to navigate to the appropriate items.  Enter
+the function to apply as<br>
+<i>module name.function name</i><br>
+<p>Custom functions can have parameters.  To specify one or more parameters,
+enclose the parameter list in parentheses and write the parameter names and values.
+For example,<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+would call the function <i>writeitemtitles</i> in the <i>myfunctions</i> module.  
+Consult the documentation for any particular custom function to find
+out what parameters it accepts.  Parameter names must be written in the case
+as specified in the function definition.
+<p>If the parameter value is a string, enclose it in single quotes, e.g.<br>
+<i>option='both'</i>
+<br>
+
+<h2>Additional Features</h2>
+<p>
+This dialog generates syntax for the SPSSINC MODIFY TABLES extension command. To display help for this command,
+run the following syntax:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+The command syntax allows you to:
+<ul>
+<li>Specify a list of commands for selection</li>
+<li>Specify a list of table subtypes</li>
+<li>Process visible, nonvisible, or all output items</li>
+<li>Delete selected items rather than just hide them</li>
+</ul>
+<h2>Requirements</h2>
+<p>
+This dialog requires the Integration Plug-In for Python and the SPSSINC MODIFY TABLES extension command. For IBM® SPSS® Statistics 19 and higher, 
+the Plug-In and the extension command are installed with the Essentials for Python package. For more information, see How to Get Integration Plug-Ins, 
+under Core System > Frequently Asked Questions in the IBM SPSS Statistics Help system. If you downloaded SPSSINC MODIFY TABLES 
+from the SPSS Community, then please follow the instructions in the associated readme file. 
+</p>
+<br/>
+<hr/>
+<p style="font-family:Verdana, Arial, sans-serif;font-size:80%;">© Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Modifica titoli output</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Modifica titoli output</h1>
+Utilizzare questa finestra di dialogo per modificare i titoli e/o il
+testo nel riquadro schema del Visualizzatore e i titoli o il testo degli elementi stessi. È anche
+possibile cambiare la loro visibilità. Nella finestra di dialogo principale si specificano
+i tipi di elementi da elaborare e i criteri di selezione, mentre
+nella finestra di dialogo secondaria <i>Azioni</i> si specificano
+le azioni da applicare. Le operazioni vengono applicate alla finestra del Visualizzatore designata.
+<p>
+Scegliere uno o più tipi di elementi da elaborare. Sono per la maggior parte evidenti.
+Le intestazioni sono gli elementi dello schema che hanno elementi figlio sotto di loro.
+I titoli sono i titoli degli elementi effettivi. Non tutti gli elementi hanno un titolo
+che può essere modificato da questo comando. In particolare, i titoli degli elementi
+Grafici, Modelli e Alberi non possono essere modificati. Tuttavia,
+è possibile modificare il testo del corrispondente schema.
+<p>
+Per impostazione predefinita, il comando elabora l'output dalla procedura
+immediatamente precedente (ignorando gli elementi Log intermedi).
+È possibile modificarla in modo che vengano elaborati tutti i contenuti correnti del Visualizzatore.
+<p>
+Vengono elaborati solo gli elementi visibili. È possibile nascondere gli elementi
+selezionati scegliendo <i>Nascondi</i> nella finestra di dialogo secondaria Azioni.
+<h2>Criteri di selezione</h2>
+È possibile limitare gli elementi elaborati specificando una o più delle opzioni
+Comando, Sottotipo di tabella, Criteri titolo schema e Criteri testo elemento.
+I campi che non si applicano a un particolare tipo di oggetto vengono
+ignorati quando si determina la selezione. Solo gli elementi che soddisfano
+i criteri applicabili vengono modificati.
+<p>
+I campi <i>Comando</i> e <i>Sottotipo di tabella</i> corrispondono
+agli identificativi SGO degli elementi.
+È possibile trovarli facendo clic con il tasto destro del mouse
+sulla voce dello schema di un esempio o da <i>Utilità>Identificativi SGO</i>.
+<P>
+I <i>Criteri titolo schema</i> e i <i>Criteri testo elemento</i>
+possono essere specificati come corrispondenze esatte (ignorando
+le lettere maiuscole/minuscole) oppure dal testo iniziale o finale. È
+inoltre possibile utilizzare un'espressione regolare, ovvero un modo generico
+per descrivere un modello. Le espressioni regolari non vengono spiegate qui. Informazioni
+utili sono disponibili all'indirizzo http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Finestra di dialogo secondaria Azioni</h2>
+Fare clic sul pulsante <i>Azioni</i> per specificare le azioni da intraprendere con gli elementi selezionati.
+Se non si specifica alcunché in questa finestra di dialogo secondaria, il comando non eseguirà alcuna azione.
+<h3>Sostituzione di testo</h3>
+È possibile inserire il nuovo testo dello schema e/o il titolo o il testo dell'elemento
+nei gruppi <i>Testo schema</i> e <i>Testo elemento</i>. Può trattarsi di testo letterale
+con cui sostituire i contenuti obsoleti oppure di un'espressione regolare
+di sostituzione.
+<p>
+Nel nuovo testo, è possibile fare riferimento al testo precedente ed è
+possibile includere un numero o una lettera sequenziale. Il numero di sequenza o la
+lettera è rappresentato da "\\0" e il vecchio testo da "\\1".  Ad esempio, per
+aggiungere un numero di sequenza al vecchio titolo, è possibile immettere
+<br>
+Tabella \\0: \\1<br>
+È anche possibile utilizzare la notazione \\0 in un'espressione regolare.
+<p>
+Nel testo di sostituzione è utilizzabile anche la notazione di
+formattazione html o rtf. Ad esempio,<br>
+&lt;html&gt;Il &lt;i&gt;nuovo&lt;/i&gt; titolo<br>
+determinerà la visualizzazione di "New" in stile corsivo.
+<p>Nei criteri di selezione, i dettagli di formattazione
+vengono ignorati. La direttiva \\1 omette anche le informazioni di formattazione.
+<p>
+Se sono state utilizzate delle parentesi nell'espressione regolare di selezione,
+è possibile utilizzare \n riferimenti a questi gruppi, dove n è il numero di gruppi. Se
+non è stata utilizzata alcuna espressione regolare per la selezione,
+il vecchio titolo viene considerato gruppo 1.
+<h3>Numerazione sequenza</h3>
+Il valore sequenziale può essere un numero oppure lettere o numerali romani. Per scegliere,
+selezionare la casella <i>Elementi numero o lettera</i>. Per impostazione predefinita, gli stili sono numerici e iniziano da 1.  È possibile immettere un valore iniziale diverso.  Se la sequenza è una o più lettere (fino a quattro), sarà composta da
+lettere corrispondenti al formato maiuscolo o minuscolo della prima lettera. Se si seleziona uno dei
+pulsanti relativi ai numerali romani, la sequenza sarà in numerali romani. Il valore iniziale, se specificato,
+deve essere numerico in questo caso. <p>Per ottenere i valori di sequenza, è necessario sia selezionare la casella <i>Elementi numero o lettera</i> che
+includere \\0 nello schema o nel testo elemento.
+<h3>Inserimento delle interruzioni di pagina</h3>
+Se si seleziona <i>Titoli</i> nel gruppo <i>Oggetti di output</i> nella finestra di dialogo
+principale, è possibile inserire un'interruzione di pagina di fronte a ciascun titolo che rientra nei criteri di selezione. Selezionare la casella <i>Interruzioni di pagina</i>. Per impostazione predefinita, sono interessati solo i titoli a livello di schema con rientro di un livello sotto all'intestazione di una procedura. Per impostare le interruzioni sugli oggetti titolo a
+tutti i livelli dello schema, selezionare il pulsante <i>Tutti</i>. <h3>Funzioni personalizzate</h3>
+I programmatori Python possono specificare una funzione personalizzata
+da chiamare per ogni oggetto selezionato. In questo modo si avanza d
+i scrivere il codice per spostarsi sugli elementi appropriati. Immettere
+la funzione da applicare come<br>
+<i>nome modulo nome funzione</i><br>
+<p>Le funzioni personalizzate possono avere dei parametri. Per specificare uno o più parametri, racchiudere
+l'elenco dei parametri tra parentesi e scrivere i nomi e i valori dei parametri. Ad esempio,<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+richiamerà la funzione <i>writeitemtitles</i> nel modulo <i>myfunctions</i>.
+Consultare la documentazione della funzione personalizzata specifica
+per scoprire quali parametri accetta. I nomi dei parametri devono essere scritti
+rispettando le maiuscole e le minuscole della definizione della funzione.
+<p>Se il valore del parametro è una stringa, racchiuderlo tra virgolette singole, ad es.<br>
+<i>option='both'</i>
+<br>
+
+<h2>Funzioni aggiuntive</h2>
+<p>
+Questa finestra di dialogo genera la sintassi del comando di estensione SPSSINC MODIFY TABLES. Per
+visualizzare la guida per questo comando, utilizzare la sintassi riportata di seguito:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+Questa sintassi di comando consente di:
+<ul>
+<li>Specificare un elenco dei comandi per la selezione</li>
+<li>Specificare un elenco di sottotipi di tabella</li>
+<li>Elaborare gli elementi di output visibili, non visibili oppure tutti</li>
+<li>Eliminare gli elementi selezionati anziché nasconderli semplicemente</li>
+</ul>
+<h2>Requisiti</h2>
+<p>
+Questa finestra di dialogo richiede il plug-in di integrazione per Python e il comando di estensione SPSSINC MODIFY TABLES. Per IBM SPSS Statistics 19 e
+versioni successive, il plug-in e il comando di estensione vengono installati con il package
+Essentials for Python. Per ulteriori informazioni, consultare Come ottenere i plug-in di integrazione
+in Sistema principale > Domande frequenti nella guida in linea di IBM SPSS Statistics. Se il comando di estensione SPSSINC MODIFY TABLES è stato scaricato da SPSS Community, seguire le istruzioni nel file readme associato.
+</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

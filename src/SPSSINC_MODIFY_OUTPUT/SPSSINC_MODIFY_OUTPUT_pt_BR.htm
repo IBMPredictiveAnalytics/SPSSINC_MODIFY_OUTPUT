@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Modificar títulos de saída</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Modificar títulos de saída</h1>
+Use essa caixa de diálogo para modificar os títulos e/ou texto na área de janela da estrutura de tópicos do Visualizador e os títulos ou texto dos próprios itens.  Também é possível alterar a visibilidade desses itens.  Especifique os tipos de itens a serem processados e os critérios de seleção na caixa de diálogo principal. Use o subdiálogo <i>Ações</i> para especificar as ações a serem aplicadas.
+As operações são aplicadas na janela do Visualizador designada.
+<p>
+Escolha um ou mais tipos de itens a serem processados.  A maior parte deles é evidente.
+Cabeçalhos são os itens de estrutura de tópicos que têm itens filhos.
+Títulos são os títulos dos itens reais.  Nem todos os itens têm títulos que podem ser modificados por esse comando.  Especificamente, títulos de itens como Gráficos, Modelos e Árvores não podem ser alterados.  No entanto, é possível modificar o texto de estrutura de tópicos.
+<p>
+Por padrão, o comando processa a saída do procedimento imediatamente anterior (ignorando os itens de log intervenientes).
+É possível alterar essa configuração para processar todo o conteúdo atual do Visualizador.
+<p>
+Somente os itens visíveis são processados.  É possível ocultar os itens selecionados escolhendo a opção <i>Ocultar</i> no subdiálogo Ações.
+<h2>Critérios de seleção</h2>
+É possível limitar os itens processados especificando uma ou mais opções do Comando, Subtipo de tabela, Critérios de título de estrutura de tópicos e Critérios de título de item.
+Os campos que não se aplicam a um tipo específico de objeto são ignorados na determinação da seleção.  Somente os itens que satisfazem a todos os critérios aplicáveis são modificados.
+<p>
+Os campos <i>Comando</i> e <i>Subtipo de tabela</i> correspondem aos identificadores de OMS para os itens.  Para localizá-los, clique com o botão direito na entrada de estrutura de tópicos de um exemplo ou clique em <i>Utilitários&gt;Identificadores de OMS</i>.
+<P>
+As opções <i>Critérios de título de estrutura de tópicos</i> e <i>Critérios de texto de item</i> podem ser especificadas como correspondências exatas (não diferenciando maiúsculas de minúsculas) ou pelo texto inicial ou final.  Também é possível usar uma expressão regular, que é uma maneira geral de descrever um padrão.
+As expressões regulares não são explicadas aqui.  Uma origem útil é http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Subdiálogo Ações</h2>
+Clique no botão <i>Ações</i> para especificar o que fazer aos itens selecionados.
+Se nada for especificado em Ações, o comando não fará nada silenciosamente.
+<h3>Substituindo texto</h3>
+É possível inserir um novo texto para a estrutura de tópicos e/ou para o título ou texto de item nos grupos <i>Texto de estrutura de tópicos</i> e <i>Texto de item</i>.  O texto pode ser um texto literal para substituir o conteúdo antigo, ou uma expressão regular de substituição.
+<p>
+No novo texto, é possível fazer referência ao texto antigo e incluir um número ou letra de sequência.  O número ou letra de sequência é representado por "\\0" e o texto antigo por "\\1".  Por exemplo, para incluir um número de sequência no título antigo, é possível inserir
+<br>
+Tabela \\0: \\1<br>
+É possível também usar a notação \\0 em uma expressão regular.
+<p>
+É possível usar a notação de formatação html ou rtf no texto de substituição.  Por exemplo:<br>
+&lt;html&gt;The &lt;i&gt;New&lt;/i&gt; Title<br>
+faria com que "New" aparecesse em itático.
+<p>Nos critérios de seleção, as informações de formatação são ignoradas.  A diretiva \\1 também omite as informações de formatação.
+<p>
+Se você usou parênteses na expressão regular de seleção, poderá usar referências \n a esses grupos, em que n é o número do grupo.  Se nenhuma expressão regular tiver sido usada para a seleção, o título antigo será considerado grupo 1.
+<h3>Número de sequência</h3>
+O valor de sequência pode ser um numero, letras ou numerais romanos.  Marque a caixa <i>Itens de número ou de letra</i> para escolher.
+Por padrão, os estilos são numéricos e iniciam com 1.  É possível inserir um valor inicial diferente.  Se o valor for uma ou mais letras (até quatro), a sequência será formada por letras que seguem o padrão de maiúsculas/minúsculas da primeira letra.
+Se você marcar um dos botões de numeral romano, a sequência será em números romanos.  Neste caso, o valor inicial, se inserido, deve ser numérico.
+<p>Para obter os valores de sequência, você deve marcar a caixa <i>Itens de número ou de letra</i> e incluir \\0 na estrutura de tópicos ou no texto do item.
+<h3>Inserindo quebras de página</h3>
+Se você selecionar <i>Títulos</i> no grupo <i>Objetos de saída</i> na caixa de diálogo principal, será possível inserir uma quebra de página na frente de cada título que corresponda aos critérios de seleção.  Marque a caixa <i>Quebras de página</i>.  Por padrão, são afetados somente títulos no nível de estrutura de tópicos recuados um nível abaixo de um cabeçalho de procedimento.  Defina o botão <i>Todos</i> para ajustar as quebras em objetos de título em todos os níveis de estrutura de tópicos.
+<h3>Funções customizadas</h3>
+Programadores Python e seus amigos podem especificar uma função personalizada a ser chamada para cada objeto selecionado.  Isso pode evitar a escrita de código para navegar até os itens apropriados.  Insira a função a ser aplicada como<br>
+<i>nome name.function do módulo</i><br>
+<p>Funções customizadas podem ter parâmetros.  Para especificar um ou mais parâmetros, coloque a lista de parâmetros entre parênteses e escreva os nomes e valores do parâmetro.
+Por exemplo:<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+chamaria a função <i>writeitemtitles</i> no módulo <i>myfunctions</i>.  
+Consulte a documentação sobre qualquer função customizada específica para saber quais parâmetros ela aceita.  Os nomes de parâmetro devem ser escritos seguindo o padrão de maiúsculas e minúsculas especificado na definição de função.
+<p>Se o valor de parâmetro for uma sequência, coloque-o entre aspas simples, por exemplo,<br>
+<i>option='both'</i>
+<br>
+
+<h2>Recursos adicionais</h2>
+<p>
+Essa caixa de diálogo gera sintaxe para o comando de extensão SPSSINC MODIFY TABLES. Para exibir ajuda para este comando, execute a seguinte sintaxe:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+A sintaxe de comando permite:
+<ul>
+<li>Especificar uma lista de comandos para seleção</li>
+<li>Especificar uma lista de subtipos de tabela</li>
+<li>Processar itens de saída visíveis, não visíveis ou todos</li>
+<li>Excluir os itens selecionados em vez de apenas ocultá-los</li>
+</ul>
+<h2>Requisitos</h2>
+<p>
+Essa caixa de diálogo requer o plug-in de integração para Python e o comando de extensão SPSSINC MODIFY TABLES. Para o IBM SPSS Statistics 19 e posterior, o Plug-in e o comando de extensão são instalados com o pacote Essentials for Python. Para obter informações adicionais, consulte Como Obter Integration Plug-In, no Sistema Principal &gt; Perguntas mais Frequentes no sistema de ajuda do IBM SPSS Statistics Help. Se você transferiu por download SPSSINC MODIFY TABLES da Comunidade SPSS, siga as instruções no arquivo leia-me associado. 
+</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

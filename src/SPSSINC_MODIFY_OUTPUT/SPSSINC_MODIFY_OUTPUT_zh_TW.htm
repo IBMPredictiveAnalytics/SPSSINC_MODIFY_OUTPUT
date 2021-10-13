@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+
+  <title>修改輸出標題</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>修改輸出標題</h1>
+使用此對話框，以修改「檢視器」大綱窗格中的標題及/或文字，以及項目本身的標題或文字。您也可以變更其可見性。您可以指定要處理的項目類型，以及主要對話框中的選取準則，以及要在 <i>動作</i>子對話框中套用的動作。作業會套用至指定的「檢視器」視窗。<p>
+選擇一個以上要處理的項目類型。大部分顯而易見。標題是在其下方具有子項的概要項目。標題是實際項目的標題。並非所有項目都具有可以透過此指令修改的標題。特別是無法變更「圖表」、「模型」及「樹狀結構」項目標題。然而，其大綱文字可以是。<p>
+依預設，該指令會處理緊接之前的程序中的輸出（忽略中間的日誌項目）。您可以變更該項，以處理所有「檢視器」的現行內容。<p>
+僅處理可見項目。您可以在「動作」子對話框中選擇<i>隱藏</i>，來隱藏選取的項目。<h2>選項準則</h2>
+您可以透過指定一個以上「指令」、「表格子類型」、「大綱標題準則」及「項目標題準則」，來限制所處理的項目。在判定選擇時，系統會忽略不適用於特定物件類型的欄位。僅修改符合所有適用準則的項目。<p>
+<i>指令</i>及<i>表格子類型</i>欄位對應於項目的 OMS ID。您可以在範例的大綱項目上或從<i>公用程式 >OMS ID</i>中按一下滑鼠右鍵，來尋找這些項目。<P>
+<i>大綱標題準則</i>及<i>項目文字準則</i>可以指定為完全相符項（忽略大小寫），或者透過開頭或結束文字指定。您也可以使用正規表示式，這是說明型樣的一般方式。這裡未說明正規表示式。一個有用的來源是 http://www.amk.ca/python/howto/regex。<p>
+<h2>動作子對話框</h2>
+按一下<i>動作</i>按鈕，以指定要對所選取項目執行的動作。如果未在「動作」中指定任何項目，則指令將無聲自動地不執行任何動作。<h3>取代文字</h3>
+您可以在<i>大綱文字</i>及<i>項目文字</i>群組中輸入大綱及/或項目標題或文字的新文字。它可以是字面文字以取代舊內容，也可以是取代正規表示式。<p>
+在新文字中，您可以參照舊文字，也可以包括序號或字母。序號或字母由 "\\0" 代表，而舊文字由 "\\1" 代表。例如，若要將序號新增至舊標題，您可以輸入<br>
+Table \\0: \\1<br>
+您也可以在正規表示式中使用 \\0 表示法。<p>
+您可以在取代文字中使用 html 或 rtf 格式化表示法。例如，<br>
+&lt;html&gt;The &lt;i&gt;New&lt;/i&gt; Title<br>
+將導致 "New" 以斜體樣式顯示。
+<p>在選取準則中，會忽略格式化資訊。\\1 指引也會省略格式化資訊。<p>
+如果您在選擇正規表示式中使用括弧，則可以使用這些群組的 \n 參照，其中 n 是群組號碼。如果未使用正規表示式進行選取，則會將舊標題視為群組 1。<h3>序列編號</h3>
+序列值可以是數字、字母或羅馬數字。勾選要選擇的<i>數字或字母項目</i>。依預設，樣式是數值，並且從 1 開始。您可以輸入不同的起始值。如果是一個以上字母（最多四個），則序列將是符合第一個字母大小寫的字母。如果您勾選其中一個羅馬數字按鈕，則系列將採用羅馬數字。在此情況下，所輸入的起始值必須是數值。<p>為了取得序列值，您必須同時勾選<i>數字或字母項目</i>方框，並在大綱或項目文字中併入 \\0。<h3>插入分頁</h3>
+如果您在主要對話框的<i>輸出物件</i>群組中選取<i>標題</i>，則可以在符合選取準則的每個標題前面插入分頁。勾選<i>分頁</i>方框。依預設，僅影響在程序標題下縮排一個層次的大綱層次的標題。設定<i>全部</i>按鈕，以在所有大綱層次設定標題物件的分段。<h3>自訂函數</h3>
+Python 程式設計師及其朋友可以指定要針對每一個所選取物件呼叫的自訂函數。這可以節省撰寫程式碼以導覽至適當的項目。輸入要套用的函數<br>
+<i>module name.function name</i><br>
+<p>自訂函數可以具有參數。若要指定一個以上參數，請使用括弧括住參數清單，並撰寫參數名稱和值。例如，<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+會在 <i>myfunction</i> 模組中呼叫函數 <i>writeitemtitles</i>。請參閱任何特定自訂函數的說明文件，以瞭解其接受的參數。參數名稱必須以函數定義中指定的大小寫進行撰寫。<p>如果參數值是字串，請將它含括在單引號中，例如<br>
+<i>option='both'</i>
+<br>
+
+<h2>其他特性</h2>
+<p>
+此對話框會產生 SPSSINC MODIFY TABLES 延伸指令的語法。若要顯示此指令的說明，請執行下列語法：</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+指令語法可讓您：<ul>
+<li>指定供選擇的指令清單</li>
+<li>指定表格子類型的清單</li>
+<li>處理可見、不可見或所有輸出項目</li>
+<li>刪除所選取的項目，而不僅隱藏它們</li>
+</ul>
+<h2>需求</h2>
+<p>
+此對話框需要 Integration Plug-In for Python 及 SPSSINC MODIFY TABLES 延伸指令。對於 IBM SPSS Statistics 19 及更高版本，Plug-In 及延伸指令會隨 Essentials for Python 套件一起安裝。如需相關資訊，請參閱 IBM SPSS Statistics 說明系統中「核心系統」>「常見問題」下的「如何取得 Integration Plug-In」。如果您已從 SPSS 社群下載 SPSSINC MODIFY TABLES，請遵循相關 Readme 檔中的指示。</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+
