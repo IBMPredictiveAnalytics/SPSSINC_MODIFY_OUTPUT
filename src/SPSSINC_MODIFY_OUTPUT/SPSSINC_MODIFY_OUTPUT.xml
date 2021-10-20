@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Extension xmlns="http://spss.com/clementine/extensions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="1.0" xsi:schemaLocation="http://spss.com/clementine/extensions http://xml.spss.com/clementine/extensions/CLEFSpecificationFile.xsd">
+	<ExtensionDetails copyright="Licensed Materials - Property of IBM.  IBM SPSS Products: Statistics Common (C) Copyright IBM Corp. 1989, 2013.  US Government Users Restricted Rights - Use, duplication or  disclosure restricted by GSA ADP Schedule Contract with IBM Corp." description="" id="SPSSINC_MODIFY_OUTPUT" label="" provider="SPSS, Inc." providerTag="spss" version="1.0"/>
+	<Resources>
+		<Bundle id="bundle1" path="SPSSINC_MODIFY_OUTPUT" type="properties"/>
+	</Resources>
+	<CommonObjects>
+		<Actions>
+			<Action id="SPSSINC_MODIFY_OUTPUT_action" imagePath="IBMdialogicon.png" label="Modify Output Titles" labelKey="SPSSINC_MODIFY_OUTPUT_action.LABEL"/>
+		</Actions>
+	</CommonObjects>
+	<UserInterface>
+		<Controls>
+			<MenuItem action="SPSSINC_MODIFY_OUTPUT_action" offset="16" showIcon="true" spssMenu="Utilities"/>
+		</Controls>
+	</UserInterface>
+	<Node id="SPSSINC_MODIFY_OUTPUT" label="Modify Output Titles" labelKey="SPSSINC_MODIFY_OUTPUT.LABEL" type="modelBuilder">
+		<Properties>
+			<Property name="SPSSINC_MODIFY_OUTPUT" syntax="SPSSINC MODIFY OUTPUT %%outputobjects%%&#10;/IF %%command%% %%tablesubtype%%&#10;%%otcriteria%% %%itemcriteria%% %%process%%&#10;/REPLACE ITEMS %%outlinetextrepltype%% %%otext2%%&#10;%%itemtextrepltype%% %%rtext2%% %%Style%% %%start%%&#10;%%visibility%% &#10;%%pagebreaks%% %%TITLELEVELS%%&#10;%%customfunction%%"/>
+			<Property description="false" name="SPSSINC_MODIFY_OUTPUT_modal"/>
+			<Property description="" descriptionKey="outputobjects_tooltip.LABEL" isRequired="true" label="Output Objects" labelKey="outputobjects.LABEL" name="outputobjects" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="Titles in charts are not affected by this command" descriptionKey="Charts_tooltip.LABEL" label="Charts" labelKey="Charts.LABEL" name="Charts" syntax="CHARTS±" valueType="boolean"/>
+			<Property defaultValue="false" description="Headings are outline entries that have items underneath them" descriptionKey="Headings_tooltip.LABEL" label="Headings" labelKey="Headings.LABEL" name="Headings" syntax="HEADINGS±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="logs_tooltip.LABEL" label="Logs" labelKey="logs.LABEL" name="logs" syntax="LOGS±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="models_tooltip.LABEL" label="Models" labelKey="models.LABEL" name="models" syntax="MODELS±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="notes_tooltip.LABEL" label="Notes" labelKey="notes.LABEL" name="notes" syntax="NOTES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="tables_tooltip.LABEL" label="Tables" labelKey="tables.LABEL" name="tables" syntax="TABLES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="pagetitles_tooltip.LABEL" label="Page Titles" labelKey="pagetitles.LABEL" name="pagetitles" syntax="PAGETITLES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="texts_tooltip.LABEL" label="Texts" labelKey="texts.LABEL" name="texts" syntax="TEXTS±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="ootitle_tooltip.LABEL" label="Titles" labelKey="ootitle.LABEL" name="ootitle" syntax="TITLES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="trees_tooltip.LABEL" label="Trees" labelKey="trees.LABEL" name="trees" syntax="TREES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="warnings_tooltip.LABEL" label="Warnings" labelKey="warnings.LABEL" name="warnings" syntax="WARNINGS±" valueType="boolean"/>
+			<Property defaultValue="false" description="Lightweight tables - Version 19 or later" descriptionKey="lightweighttables_tooltip.LABEL" label="Lightweight tables (V19+)" labelKey="lightweighttables.LABEL" name="lightweighttables" syntax="LWTABLES±" valueType="boolean"/>
+			<Property defaultValue="false" description="Lightweight Notes - Version 19 or later" descriptionKey="LWNOTES_tooltip.LABEL" label="Lightweight Notes (V19+)" labelKey="LWNOTES.LABEL" name="LWNOTES" syntax="LWNOTES±" valueType="boolean"/>
+			<Property defaultValue="false" description="Version 19 or later" descriptionKey="LWWARNINGS_tooltip.LABEL" label="Lightweight Warnings (V19+)" labelKey="LWWARNINGS.LABEL" name="LWWARNINGS" syntax="LWWARNINGS±" valueType="boolean"/>
+			<Property description="" descriptionKey="criteria_tooltip.LABEL" label="OMS Selection Criteria" labelKey="criteria.LABEL" name="criteria" syntax="/IF %%ThisValue%%"/>
+			<Property defaultValue="" description="The OMS command identifier whose output is processed (subject to other settings)" descriptionKey="command_tooltip.LABEL" label="Command:" labelKey="command.LABEL" name="command" syntax="COMMAND=&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property defaultValue="" description="An OMS table subtype.  Right click on the outline title for one and choose Copy OMS subtype or use Utilities&gt;OMS Identifiers to find it." descriptionKey="tablesubtype_tooltip.LABEL" label="Table Subtype:" labelKey="tablesubtype.LABEL" name="tablesubtype" syntax="SUBTYPE=&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property defaultValue="Preceding" description="Choose between processing all Viewer contents or the most recent procedure output" descriptionKey="process_tooltip.LABEL" label="Visible Output to Process" labelKey="process.LABEL" name="process" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="Output from preceding command" descriptionKey="Preceding_tooltip.LABEL" hasSubGroup="false" label="Preceding command only" labelKey="Preceding.LABEL" mnemonic="P" mnemonicKey="Preceding_mnemonic.VALUE" syntax="PROCESS=PRECEDING" value="Preceding"/>
+					<Enum description="Output from all commands" descriptionKey="Alloutput_tooltip.LABEL" hasSubGroup="false" label="All" labelKey="Alloutput.LABEL" syntax="PROCESS=ALL" value="Alloutput"/>
+				</Enumeration>
+			</Property>
+			<Property description="" descriptionKey="numbering_tooltip.LABEL" label="Sequence Numbering" labelKey="numbering.LABEL" name="numbering" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="" descriptionKey="item_103_tooltip.LABEL" label="Number or letter items" labelKey="item_103.LABEL" name="item_103" syntax="SEQUENCESTART=±" valueType="boolean"/>
+			<Property defaultValue="numberorletter" description="Sequence values will appear where \\0 appears in the replacement text" descriptionKey="Style_tooltip.LABEL" label="Style" labelKey="Style.LABEL" name="Style" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="Enter \\0 in replacement title text title field" descriptionKey="numberorletter_tooltip.LABEL" hasSubGroup="false" label="Number or letter" labelKey="numberorletter.LABEL" mnemonic="B" mnemonicKey="numberorletter_mnemonic.VALUE" value="numberorletter"/>
+					<Enum description="Enter \\0 in replacement title text where roman numerals should appear" descriptionKey="upperroman_tooltip.LABEL" hasSubGroup="false" label="Upper case roman numerals" labelKey="upperroman.LABEL" mnemonic="U" mnemonicKey="upperroman_mnemonic.VALUE" syntax="SEQUENCETYPE=ROMANUPPER" value="upperroman"/>
+					<Enum description="Enter \\0 in replacement title text where roman numerals should appear" descriptionKey="lowerroman_tooltip.LABEL" hasSubGroup="false" label="Lower case roman numerals" labelKey="lowerroman.LABEL" mnemonic="L" mnemonicKey="lowerroman_mnemonic.VALUE" syntax="SEQUENCETYPE=ROMANLOWER" value="lowerroman"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="1" description="Numbering starts with entered number or letters (up to 4) which respect case.  Use a number if roman numerals are selected" descriptionKey="start_tooltip.LABEL" label="Starting number or letter(s)" labelKey="start.LABEL" name="start" syntax="SEQUENCESTART=%%ThisValue%%" valueType="string"/>
+			<Property defaultValue="" description="Enter the custom Python function modulename.functionname for each selected object" descriptionKey="customfunction_tooltip.LABEL" label="Apply custom function:" labelKey="customfunction.LABEL" name="customfunction" syntax="/CUSTOM FUNCTION=&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property description="" descriptionKey="pagebreaks_tooltip.LABEL" label="Page Breaks" labelKey="pagebreaks.LABEL" name="pagebreaks" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="Insert page break before each selected outline title" descriptionKey="item_208_tooltip.LABEL" label="Insert break before selected titles" labelKey="item_208.LABEL" name="item_208" syntax="/PAGEBREAKS BREAKBEFORETITLES=YES±" valueType="boolean"/>
+			<Property defaultValue="top" description="Insert breaks for top-level titles only or all selected titles" descriptionKey="TITLELEVELS_tooltip.LABEL" label="Title Break Levels" labelKey="TITLELEVELS.LABEL" name="TITLELEVELS" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="top_tooltip.LABEL" hasSubGroup="false" label="Top" labelKey="top.LABEL" value="top"/>
+					<Enum description="" descriptionKey="all_tooltip.LABEL" hasSubGroup="false" label="All" labelKey="all.LABEL" mnemonic="L" mnemonicKey="all_mnemonic.VALUE" syntax="TITLELEVEL=ANY" value="all"/>
+				</Enumeration>
+			</Property>
+			<Property description="" descriptionKey="outlinetext_tooltip.LABEL" label="Outline Text" labelKey="outlinetext.LABEL" name="outlinetext" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="" descriptionKey="item_53_tooltip.LABEL" label="Replace outline text" labelKey="item_53.LABEL" name="item_53" syntax="%%ThisValue%%±" valueType="boolean"/>
+			<Property defaultValue="otextr" description="" descriptionKey="outlinetextrepltype_tooltip.LABEL" label="Replacement Type:" labelKey="outlinetextrepltype.LABEL" name="outlinetextrepltype" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum label="Text" labelKey="otextr.LABEL" syntax="OUTLINETITLE=" value="otextr"/>
+					<Enum label="Regular expression" labelKey="otextregexp.LABEL" syntax="OUTLINETITLEREGEXP=" value="otextregexp"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="" description="" descriptionKey="otext2_tooltip.LABEL" label="Replacement Text:" labelKey="otext2.LABEL" name="otext2" syntax="&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property description="" descriptionKey="replaceitem_tooltip.LABEL" label="Item Text" labelKey="replaceitem.LABEL" name="replaceitem" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="" descriptionKey="item_61_tooltip.LABEL" label="Replace item text" labelKey="item_61.LABEL" name="item_61" syntax="%%ThisValue%%±" valueType="boolean"/>
+			<Property defaultValue="itemr" description="How to interpret the Replacement Text field" descriptionKey="itemtextrepltype_tooltip.LABEL" label="Replacement Type:" labelKey="itemtextrepltype.LABEL" name="itemtextrepltype" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum label="Text" labelKey="itemr.LABEL" syntax="ITEMTITLE=" value="itemr"/>
+					<Enum label="Regular expression" labelKey="itemregexp.LABEL" syntax="ITEMTITLEREGEXP=" value="itemregexp"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="" description="" descriptionKey="rtext2_tooltip.LABEL" label="Replacement Text:" labelKey="rtext2.LABEL" name="rtext2" syntax="&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property defaultValue="visasis" description="Controls whether processed items will be hidden or left as is" descriptionKey="visibility_tooltip.LABEL" label="Set Item Visibility" labelKey="visibility.LABEL" name="visibility" syntax="/VISIBILITY %%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="" descriptionKey="visasis_tooltip.LABEL" hasSubGroup="false" label="As is" labelKey="visasis.LABEL" mnemonic="A" mnemonicKey="visasis_mnemonic.VALUE" value="visasis"/>
+					<Enum description="" descriptionKey="vishide_tooltip.LABEL" hasSubGroup="false" label="Hide" labelKey="vishide.LABEL" mnemonic="H" mnemonicKey="vishide_mnemonic.VALUE" syntax="VISIBLE=FALSE" value="vishide"/>
+				</Enumeration>
+			</Property>
+			<Property description="" descriptionKey="itemcriteria_tooltip.LABEL" label="Item Text Criteria" labelKey="itemcriteria.LABEL" name="itemcriteria" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="" descriptionKey="item_530_tooltip.LABEL" label="Select only if" labelKey="item_530.LABEL" name="item_530" syntax="%%ThisValue%%±" valueType="boolean"/>
+			<Property defaultValue="exacti" description="How to interpret following item title text when scanning for items to process" descriptionKey="itemtexttype_tooltip.LABEL" label="Criterion:" labelKey="itemtexttype.LABEL" name="itemtexttype" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum label="Exact text" labelKey="exacti.LABEL" syntax="ITEMTITLE=" value="exacti"/>
+					<Enum label="Starts with" labelKey="starti.LABEL" syntax="ITEMTITLESTART=" value="starti"/>
+					<Enum label="Ends with" labelKey="endi.LABEL" syntax="ITEMTITLEEND=" value="endi"/>
+					<Enum label="Regular expression" labelKey="regexpi.LABEL" syntax="ITEMTITLEREGEXP=" value="regexpi"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="" description="Item title text to process." descriptionKey="itemtitletextc_tooltip.LABEL" isRequired="true" label="Text:" labelKey="itemtitletextc.LABEL" name="itemtitletextc" syntax="&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property description="" descriptionKey="otcriteria_tooltip.LABEL" label="Outline Title Criteria" labelKey="otcriteria.LABEL" name="otcriteria" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="" descriptionKey="item_532_tooltip.LABEL" label="Select only if" labelKey="item_532.LABEL" name="item_532" syntax="%%ThisValue%%±" valueType="boolean"/>
+			<Property defaultValue="exacto" description="Choose how the text below is interpreted when scanning for items." descriptionKey="outlinetext1_tooltip.LABEL" label="Criterion:" labelKey="outlinetext1.LABEL" name="outlinetext1" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum label="Exact text" labelKey="exacto.LABEL" syntax="OUTLINETITLE=" value="exacto"/>
+					<Enum label="Starts with" labelKey="starto.LABEL" syntax="OUTLINETITLESTART=" value="starto"/>
+					<Enum label="Ends with" labelKey="endo.LABEL" syntax="OUTLINETITLEEND=" value="endo"/>
+					<Enum label="Regular expression" labelKey="regexpo.LABEL" syntax="OUTLINETITLEREGEXP=" value="regexpo"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="" description="Text to scan for" descriptionKey="outlinetitletext_tooltip.LABEL" isRequired="true" label="Text:" labelKey="outlinetitletext.LABEL" name="outlinetitletext" syntax="&quot;%%ThisValue%%&quot;" valueType="string"/>
+		</Properties>
+		<UserInterface>
+			<Tabs>
+				<Tab helpLink="SPSSINC_MODIFY_OUTPUT.htm" label="">
+					<PropertiesPanel>
+						<StaticText text="This dialog requires the\nIntegration Plug-In for Python." textKey="item_35.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<PropertiesPanel id="outputobjects" label="Output Objects" labelKey="outputobjects.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+							<CheckBoxControl mnemonic="S" mnemonicKey="Charts_mnemonic.VALUE" property="Charts">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="H" mnemonicKey="Headings_mnemonic.VALUE" property="Headings">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="L" mnemonicKey="logs_mnemonic.VALUE" property="logs">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="M" mnemonicKey="models_mnemonic.VALUE" property="models">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="N" mnemonicKey="notes_mnemonic.VALUE" property="notes">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="4" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="B" mnemonicKey="tables_mnemonic.VALUE" property="tables">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="5" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="G" mnemonicKey="pagetitles_mnemonic.VALUE" property="pagetitles">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="6" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="X" mnemonicKey="texts_mnemonic.VALUE" property="texts">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="7" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="E" mnemonicKey="ootitle_mnemonic.VALUE" property="ootitle">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="8" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl property="trees">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="9" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="W" mnemonicKey="warnings_mnemonic.VALUE" property="warnings">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="10" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl mnemonic="V" mnemonicKey="lightweighttables_mnemonic.VALUE" property="lightweighttables">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="11" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl property="LWNOTES">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="12" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<CheckBoxControl property="LWWARNINGS">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="13" gridWidth="1" rowWeight="1.0"/>
+							</CheckBoxControl>
+						</PropertiesPanel>
+						<PropertiesPanel id="criteria" label="OMS Selection Criteria" labelKey="criteria.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+							<TextBoxControl mnemonic="C" mnemonicKey="command_mnemonic.VALUE" property="command">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</TextBoxControl>
+							<TextBoxControl mnemonic="T" mnemonicKey="tablesubtype_mnemonic.VALUE" property="tablesubtype">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+							</TextBoxControl>
+						</PropertiesPanel>
+						<RadioButtonGroupControl property="process" rows="2" useSubPanel="false">
+							<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+							<RadioButton property="Preceding"/>
+							<RadioButton property="Alloutput"/>
+						</RadioButtonGroupControl>
+						<PropertiesSubPanel buttonDescription="Use t his subdialog box to specify the changes to make" buttonDescriptionKey="item_51_tooltip.LABEL" buttonLabel="Actions..." buttonLabelKey="item_51.LABEL" dialogTitle="Output Actions" dialogTitleKey="Outputactions.TITLE" helpLink="SPSSINC_MODIFY_OUTPUT.htm" mnemonic="A" mnemonicKey="item_51_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="2" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<PropertiesPanel id="numbering" label="Sequence Numbering" labelKey="numbering.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="N" mnemonicKey="item_103_mnemonic.VALUE" property="item_103">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<RadioButtonGroupControl property="Style" rows="3" useSubPanel="false">
+										<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+										<RadioButton property="numberorletter"/>
+										<RadioButton property="upperroman"/>
+										<RadioButton property="lowerroman"/>
+									</RadioButtonGroupControl>
+									<TextBoxControl mnemonic="M" mnemonicKey="start_mnemonic.VALUE" property="start">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+									</TextBoxControl>
+								</PropertiesPanel>
+								<TextBoxControl mnemonic="F" mnemonicKey="customfunction_mnemonic.VALUE" property="customfunction">
+									<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+								</TextBoxControl>
+								<PropertiesPanel id="pagebreaks" label="Page Breaks" labelKey="pagebreaks.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="S" mnemonicKey="item_208_mnemonic.VALUE" property="item_208">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<RadioButtonGroupControl property="TITLELEVELS" rows="2" useSubPanel="false">
+										<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+										<RadioButton property="top"/>
+										<RadioButton property="all"/>
+									</RadioButtonGroupControl>
+								</PropertiesPanel>
+								<PropertiesPanel id="outlinetext" label="Outline Text" labelKey="outlinetext.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="O" mnemonicKey="item_53_mnemonic.VALUE" property="item_53">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<ComboBoxControl attr_name="" based_on="variable_names" mnemonic="T" mnemonicKey="outlinetextrepltype_mnemonic.VALUE" property="outlinetextrepltype" target_id="" use_values="false">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+									</ComboBoxControl>
+									<TextBoxControl mnemonic="P" mnemonicKey="otext2_mnemonic.VALUE" property="otext2">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+									</TextBoxControl>
+								</PropertiesPanel>
+								<PropertiesPanel id="replaceitem" label="Item Text" labelKey="replaceitem.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="R" mnemonicKey="item_61_mnemonic.VALUE" property="item_61">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<ComboBoxControl attr_name="" based_on="variable_names" mnemonic="Y" mnemonicKey="itemtextrepltype_mnemonic.VALUE" property="itemtextrepltype" target_id="" use_values="false">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+									</ComboBoxControl>
+									<TextBoxControl mnemonic="X" mnemonicKey="rtext2_mnemonic.VALUE" property="rtext2">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+									</TextBoxControl>
+								</PropertiesPanel>
+								<RadioButtonGroupControl property="visibility" rows="2" useSubPanel="false">
+									<Layout columnWeight="1.0" fill="both" gridColumn="1" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+									<RadioButton property="visasis"/>
+									<RadioButton property="vishide"/>
+								</RadioButtonGroupControl>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<StaticText text="Click  the Actions button to\n specify modifications." textKey="item_54.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="1" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<PropertiesPanel id="itemcriteria" label="Item Text Criteria" labelKey="itemcriteria.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="1.0"/>
+							<CheckBoxControl labelAbove="true" mnemonic="F" mnemonicKey="item_530_mnemonic.VALUE" property="item_530">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<ComboBoxControl attr_name="" based_on="variable_names" mnemonic="I" mnemonicKey="itemtexttype_mnemonic.VALUE" property="itemtexttype" target_id="" use_values="false">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+							</ComboBoxControl>
+							<TextBoxControl property="itemtitletextc">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+							</TextBoxControl>
+						</PropertiesPanel>
+						<PropertiesPanel id="otcriteria" label="Outline Title Criteria" labelKey="otcriteria.LABEL">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+							<CheckBoxControl labelAbove="true" mnemonic="I" mnemonicKey="item_532_mnemonic.VALUE" property="item_532">
+								<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							</CheckBoxControl>
+							<ComboBoxControl attr_name="" based_on="variable_names" mnemonic="O" mnemonicKey="outlinetext1_mnemonic.VALUE" property="outlinetext1" target_id="" use_values="false">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+							</ComboBoxControl>
+							<TextBoxControl property="outlinetitletext">
+								<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+							</TextBoxControl>
+						</PropertiesPanel>
+						<StaticText text="This dialog was created using a later version of PASW Statistics\nand certain features may not function as intended." textKey="v17_warning.LABEL">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="4" gridWidth="1" rowWeight="1.0"/>
+						</StaticText>
+					</PropertiesPanel>
+				</Tab>
+			</Tabs>
+		</UserInterface>
+	</Node>
+</Extension>

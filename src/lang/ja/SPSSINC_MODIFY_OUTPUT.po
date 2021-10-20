@@ -1,92 +1,64 @@
-#/***********************************************************************
-# * Licensed Materials - Property of IBM 
-# *
-# * IBM SPSS Products: Statistics Common
-# *
-# * (C) Copyright IBM Corp. 1989, 2011
-# *
-# * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
-# ************************************************************************/
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-01-08 07:59+Mountain Standard Time\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-11 00:31-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Globalization Pipeline\n"
 
-
-#: modifyoutput.py:39
 msgid "SpssClient.StartClient failed."
 msgstr "SpssClient.StartClient に失敗しました。"
 
-#: modifyoutput.py:78
 msgid "---"
 msgstr "---"
 
-#: modifyoutput.py:89
 msgid "Information"
 msgstr "情報"
 
-#: modifyoutput.py:147
 msgid "OUTLINETITLE cannot be combined with other outline criteria on IF"
 msgstr "OUTLINETITLE は IF の他のアウトライン基準と結合できません"
 
-#: modifyoutput.py:149
 msgid "ITEMTITLE cannot be combined with other outline criteria on IF"
 msgstr "ITEMTITLE は IF の他のアウトライン基準と結合できません"
 
-#: modifyoutput.py:151
 msgid "OUTLINETITLEREGEXP cannot be combined with start or end criteria on IF"
 msgstr "OUTLINETITLEREGEXP は IF の開始基準または終了基準と結合できません"
 
-#: modifyoutput.py:153
 msgid "ITEMTITLEREGEXP cannot be combined with start or end criteria on IF"
 msgstr "ITEMTITLEREGEXP は IF の開始基準または終了基準と結合できません"
 
-#: modifyoutput.py:156
 msgid "At least one item type or ALL must be specified"
 msgstr "1 つ以上の項目タイプまたは ALL を指定する必要があります"
 
-#: modifyoutput.py:159
 msgid "BREAKBEFORETITLES is ignored, because Title objects are not selected"
 msgstr "BREAKBEFORETITLES は無視されます。タイトル オブジェクトが選択されないためです"
 
-#: modifyoutput.py:321
 msgid "Cannot combine ROMAN SEQUENCETYPE with nonnumeric start value"
 msgstr "ROMAN SEQUENCETYPE を数値型開始値と結合できません"
 
-#: modifyoutput.py:366
 msgid "Roman number sequence value must be between 1 and 5000"
 msgstr "ローマ数字のシーケンス値は 1 ～ 5000 でなければなりません"
 
-#: modifyoutput.py:412
 msgid "function reference not valid: %s"
 msgstr "関数リファレンス %s が有効ではありません"
 
-#: modifyoutput.py:416
 msgid "Import failure.  function: %s, module: %s"
 msgstr "インポートに失敗しました。関数: %s、モジュール: %s"
 
-#: modifyoutput.py:420
-msgid ""
-"Invalid custom function signature.\n"
-"Too few arguments: %s"
-msgstr ""
-"カスタム関数の署名が無効です。\n"
-"引数の数が少なすぎます: %s"
+msgid "Invalid custom function signature.\nToo few arguments: %s"
+msgstr "カスタム関数の署名が無効です。\n引数の数が少なすぎます: %s"
 
-#: modifyoutput.py:445
 msgid "Invalid customfunction parameter expression: %s"
 msgstr "カスタム関数パラメータ式 %s が無効です"
 

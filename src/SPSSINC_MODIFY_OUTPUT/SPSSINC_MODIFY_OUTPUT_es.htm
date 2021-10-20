@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Modificar títulos de resultados</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Modificar títulos de resultados</h1>
+Utilice este cuadro de diálogo para modificar los títulos y/o el texto en el panel de titulares del Visor y los títulos o el texto de los propios elementos.  También puede modificar su visibilidad.  Puede especificar los tipos de elementos que se procesarán y los criterios de selección en el cuadro de diálogo principal y las acciones que se aplicarán en el subcuadro de diálogo <i>Acciones</i>.
+Las operaciones se aplican a la ventana del visor designada.
+<p>
+Seleccione uno o más tipos de elementos que se procesarán.  La mayoría son evidentes.
+Los encabezados son los elementos de titulares que tienen hijos por debajo.
+Los títulos son los títulos de los elementos reales.  No todos los elementos tienen títulos que se puedan modificar con este comando.  En concreto, los títulos de los elementos de gráficos, modelos y árboles no se pueden modificar.  Sin embargo, su texto de titular sí se puede modificar.
+<p>
+De forma predeterminada, el comando procesa el resultado del procedimiento inmediatamente anterior (ignorando los elementos de registro que intervienen).
+Puede cambiarlo para procesar el contenido actual del visor.
+<p>
+Sólo se procesan los elementos visibles.  Se pueden ocultar los elementos seleccionados eligiendo <i>Ocultar</i> en el subcuadro de diálogo Acciones.
+<h2>Criterios de selección</h2>
+Se pueden limitar los elementos procesados especificando una o varias de las opciones siguientes: Comando, Subtipo de tabla, Criterios de titulares y Criterios de título del elemento.
+Los campos que no se aplican a un tipo de objeto particular se ignoran al determinar la selección.  Sólo se modifican los elementos que cumplan todos los criterios aplicables.
+<p>
+Los campos <i>Comandos</i> y <i>Subtipo de tabla</i> se corresponden con los identificadores SGR de los elementos.  Puede encontrarlos pulsando con el botón derecho del ratón en la entrada del titular de un ejemplo o desde <i>Utilidades &gt; Identificadores SGR</i>.
+<P>
+<i>Criterios de titulares</i> y <i>Criterios de texto de elemento</i> se pueden especificar como coincidencias exactas (ignorando la distinción entre mayúsculas y minúsculas) o por el texto de inicio o de fin.  También puede utilizar una expresión regular, que es una forma general de describir un patrón.
+Las expresiones regulares no se explican aquí.  Un recurso muy útil es http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Subcuadro de diálogo Acciones</h2>
+Pulse en el botón <i>Acciones</i> para especificar qué hacer con los elementos seleccionados.
+Si no especifica nada en Acciones, el comando no hará nada.
+<h3>Sustitución de texto</h3>
+Puede introducir texto nuevo para el titular y/o título de elemento o texto en los grupos <i>Texto de titular</i> y <i>Texto de elemento</i>.  Puede ser texto literal para sustituir el contenido anterior o una expresión regular de sustitución.
+<p>
+En el texto nuevo, puede hacer referencia al texto anterior, además de incluir una letra o número de secuencia.  La letra o el número de secuencia se representa mediante "\\0" y el texto anterior mediante "\\1".  Por ejemplo, para añadir un número de secuencia al título anterior, puede introducir
+<br>
+Tabla \\0: \\1<br>
+También puede utilizar la notación \\0 en una expresión regular.
+<p>
+Puede utilizar la notación de formato html o rtf en el texto de sustitución.  Por ejemplo,<br>
+&lt;html&gt;El &lt;i&gt;nuevo&lt;/i&gt; título<br>
+haría que "nuevo" apareciese en cursiva.
+<p>En los criterios de selección, la información de formato se ignora.  La directiva \\1 también omite la información de formato.
+<p>
+Si utilizó paréntesis en la expresión regular de la selección, puede usar \n referencias a estos grupos, donde n es el número de grupo.  Si no se ha utilizado ninguna expresión regular para la selección, el título anterior se considera grupo 1.
+<h3>Numeración de secuencia</h3>
+El valor de secuencia puede ser un número, una letra o un número romano.  Marque la casilla <i>Números o letras</i> para seleccionarlo.
+De manera predeterminada, los estilos son numéricos y empiezan por el 1.  Puede introducir un valor de inicio diferente.  Si tiene una o más letras (hasta cuatro), las letras de la secuencia coincidirán en mayúsculas y minúsculas con la primera letra.
+Si selecciona uno de los botones de números romanos, la secuencia estará en números romanos.  El valor de inicio, si se introduce, debe ser numérico en este caso.
+<p>Para obtener valores de secuencia, debe marcar la casilla <i>Números o letras</i> e incluir \\0 en el titular o el texto del elemento.
+<h3>Introducción de saltos de página</h3>
+Si selecciona <i>Títulos</i> en el grupo <i>Objetos de resultado</i> del cuadro de diálogo principal, puede introducir un salto de página delante de cada título que cumpla los criterios de selección.  Marque la casilla <i>Saltos de página</i>.  De forma predeterminada, esto sólo afecta a los títulos del nivel de titulares indentado un nivel por debajo de un encabezado de procedimiento.  Establezca el botón <i>Todo</i> para establecer saltos en objetos de título de todos los niveles de titulares.
+<h3>Funciones personalizadas</h3>
+Los programadores de Python y sus amigos pueden especificar la llamada de una función personalizada para cada objeto seleccionado.  Esto puede ahorrar el tener que escribir el código para llegar a los elementos adecuados.  Introduzca la función que se aplicará como<br>
+<i>nombre módulo.nombre función</i><br>
+<p>Las funciones personalizadas pueden tener parámetros.  Para especificar uno o más parámetros, escriba los nombres y valores de parámetros e incluya la lista de parámetros entre paréntesis.
+Por ejemplo,<br>
+<i>misfunciones.escribirtituloselementos(file='filespec')</i>
+<br>
+llamaría a la función <i>escribirtituloselementos</i> del módulo <i>misfunciones</i>.  
+Consulte la documentación de cualquier función personalizada en particular para conocer qué parámetros acepta.  Los nombres de parámetros deben escribirse siguiendo las mayúsculas y minúsculas especificadas en la definición de función.
+<p>Si el valor del parámetro es una cadena, inclúyala entre comillas simples, por ejemplo<br>
+<i>option='ambos'</i>
+<br>
+
+<h2>Características adicionales</h2>
+<p>
+Este cuadro de diálogo genera la sintaxis del comando de extensión SPSSINC MODIFY TABLES. Para mostrar la ayuda de este comando, ejecute la siguiente sintaxis:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+La sintaxis del comando le permite:
+<ul>
+<li>Especificar una lista de comandos para su selección</li>
+<li>Especificar una lista de subtipos de tabla</li>
+<li>Procesar los elementos de resultado visibles, no visibles o todos ellos</li>
+<li>Eliminar elementos seleccionados en lugar de sólo ocultarlos</li>
+</ul>
+<h2>Requisitos</h2>
+<p>
+Este cuadro de diálogo requiere el complemento de integración de Python y el comando de extensión SPSSINC MODIFY TABLES. Para IBM SPSS Statistics 19 y versiones posteriores, el complemento y el comando de extensión se instalan con el paquete Essentials for Python. Si desea más información, consulte Cómo obtener complementos de integración, en Sistema principal &gt; Preguntas más frecuentes en el sistema de ayuda de IBM SPSS Statistics. Si ha descargado SPSSINC MODIFY TABLES de la Comunidad de SPSS, siga las instrucciones del archivo léame asociado. 
+</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

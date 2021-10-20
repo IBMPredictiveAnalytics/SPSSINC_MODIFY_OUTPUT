@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Ausgabetitel ändern</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Ausgabetitel ändern</h1>
+In diesem Dialog können Sie die Titel und/oder den Text im Viewer-Gliederungsfenster
+sowie die Titel oder den Text der Elemente selbst ändern. Sie können auch ihre Sichtbarkeit ändern.
+Im Hauptdialog legen Sie die zu verarbeitenden Objekttypen und die Auswahlkriterien fest,
+im Unterdialog <i>Aktionen</i> die anzuwendenden Aktionen.
+Die Operationen werden auf das entsprechende Viewer-Fenster angewendet.
+<p>
+Wählen Sie einen oder mehrere Elementtypen zur Bearbeitung aus.
+Die meisten sind offensichtlich.
+Überschriften sind die Gliederungselemente, unter denen sich Unterpunkte befinden.
+Die Titel sind die Titel der eigentlichen Elemente.
+Nicht alle Elemente haben Titel, die mit diesem Befehl geändert werden können.
+Insbesondere die Titel von Diagrammen, Modellen und Bäumen können nicht geändert werden.
+Beim Gliederungstext ist dies aber möglich.
+<p>
+Standardmäßig verarbeitet der Befehl die Ausgabe der unmittelbar vorangegangenen Prozedur
+(und ignoriert dazwischen liegende Protokollelemente).
+Sie können dies ändern, um den gesamten aktuellen Inhalt des Viewers zu verarbeiten.
+<p>
+Nur sichtbare Elemente werden verarbeitet. Sie können die ausgewählten Elemente ausblenden,
+indem Sie <i>Ausblenden</i> im Unterdialog 'Aktionen' wählen.
+<h2>Auswahlkriterien</h2>
+Sie können die verarbeiteten Elemente einschränken, indem Sie eine oder mehrere der Optionen 'Befehl', 'Tabellenuntertyp',
+'Gliederungstitelkriterien' und 'Elementtitelkriterien' angeben.
+Felder, die nicht auf einen bestimmten Objekttyp zutreffen, werden beim Bestimmen der Auswahl ignoriert.
+Nur Elemente, die alle anwendbaren Kriterien erfüllen, werden geändert.
+<p>
+Die Felder <i>Befehl</i> und <i>Tabellenuntertyp</i> entsprechen den OMS-IDs für die Elemente.
+Sie finden diese, indem Sie mit der rechten Maustaste auf den Gliederungseintrag eines Beispiels klicken oder über <i>Dienstprogramme>OMS-IDs</i>.
+<P>
+Die <i>Gliederungstitelkriterien</i> und <i>Elementtitelkriterien</i> können als exakte Übereinstimmungen
+(ohne Berücksichtigung der Groß- und Kleinschreibung) oder durch den Anfangs- oder Endtext angegeben werden.
+Sie können auch einen regulären Ausdruck verwenden, der eine allgemeine Art der Beschreibung eines Musters ist.
+Reguläre Ausdrücke werden hier nicht erklärt. Über folgenden Link erhalten Sie weitere Informationen: http://www.amk.ca/python/howto/regex.
+<p>
+<h2>Unterdialog 'Aktionen'</h2>
+Klicken Sie auf die Schaltfläche <i>Aktionen</i>, um festzulegen, was mit den ausgewählten Elementen geschehen soll.
+Wenn unter 'Aktionen' nichts angegeben ist, wird der Befehl nicht aktiv.
+<h3>Ersetzen von Text</h3>
+Sie können einen neuen Text für die Gliederung und/oder den Elementtitel oder Text
+in den Gruppen <i>Gliederungstext</i> und <i>Elementtext</i> eingeben.  Dabei kann es sich um Literaltext handeln,
+der den alten Inhalt ersetzt, oder um einen regulären Ausdruck für die Ersetzung.
+<p>
+Im neuen Text können Sie auf den alten Text verweisen und eine laufende Nummer oder einen Buchstaben einfügen.
+Die laufende Nummer oder der Buchstabe wird durch "\\0" und der alte Text durch "\\1" dargestellt.
+Um zum Beispiel eine laufende Nummer zum alten Titel hinzuzufügen, könnten Sie Folgendes eingeben:
+<br>
+Tabelle \\0: \\1<br>
+Sie können die Notation \\0 auch in einem regulären Ausdruck verwenden.
+<p>
+Sie können im Ersetzungstext das HTML- oder RTF-Format verwenden. Beispiel:<br>
+&lt;html&gt;Der &lt;i&gt;neue&lt;/i&gt; Titel<br>
+bewirkt, dass "neue" kursiv dargestellt wird.
+<p>Bei den Auswahlkriterien werden die Formatierungsinformationen ignoriert.
+Die Anweisung \\1 übergeht die Formatinformationen ebenfalls.
+<p>
+Wenn Sie im regulären Ausdruck der Auswahl Klammern verwendet haben, können\n Sie Verweise
+auf diese Gruppen verwenden, wobei n die Gruppennummer ist. Wurde kein regulärer Ausdruck
+für die Auswahl verwendet, gilt der alte Titel als Gruppe 1.
+<h3>Sequenznummer</h3>
+Der Sequenzwert kann eine Zahl, Buchstaben oder römische Ziffern sein.
+Die Auswahl können Sie über <i>Zahlen- oder Buchstabenelemente</i> vornehmen.
+Standardmäßig sind die Stile numerisch und beginnen bei 1.
+Sie können einen anderen Startwert eingeben. Handelt es sich um einen oder mehrere Buchstaben (bis zu vier),
+richten sich alle Buchstaben hinsichtlich der Groß- und Kleinschreibung nach dem ersten Buchstaben.
+Wenn Sie eine der Schaltflächen mit den römischen Ziffern auswählen, wird die Folge in römischen Ziffern angegeben.
+Der Startwert, sofern eingegeben, muss in diesem Fall numerisch sein.
+<p>Um Sequenzwerte zu erhalten, müssen Sie das Kästchen <i>Zahlen- oder Buchstabenelemente</i> auswählen
+und \\0 in den Gliederungs- oder Positionstext einfügen.
+<h3>Einfügen von Seitenumbrüchen</h3>
+Wenn Sie <i>Titel</i> in der Gruppe <i>Ausgabeobjekte</i> im Hauptdialog auswählen, können Sie
+vor jedem Titel, der den Auswahlkriterien entspricht, einen Seitenumbruch einfügen.
+Wählen Sie das Feld <i>Seitenumbrüche</i> aus. Standardmäßig sind nur Titel auf der Gliederungsebene betroffen,
+die eine Ebene unter einer Prozedurüberschrift eingerückt sind. Setzen Sie die Schaltfläche <i>Alle</i>, um Umbrüche
+für Titelobjekte auf allen Gliederungsebenen einzurichten.
+<h3>Benutzerdefinierte Funktionen</h3>
+Python-Programmierer können eine benutzerdefinierte Funktion angeben, die für jedes ausgewählte Objekt aufgerufen wird.
+Das erspart das Schreiben von Code, um zu den entsprechenden Elementen zu navigieren.
+Geben Sie die anzuwendende Funktion wie folgt ein:<br>
+<i>Modulname.Funktionsname</i><br>
+<p>Benutzerdefinierte Funktionen können über Parameter verfügen. Um einen oder mehrere Parameter anzugeben, schließen
+Sie die Parameterliste in Klammern ein und geben die Parameternamen und -werte an.
+Beispiel:<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+Dadurch wird die Funktion <i>writeitemtitles</i> im Modul <i>myfunctions</i> aufgerufen.
+In der Dokumentation finden Sie Informationen dazu, welche Parameter die einzelnen
+benutzerdefinierten Funktionen zulassen.
+Parameternamen müssen in Bezug auf die Groß- und Kleinschreibung genau so geschrieben werden,
+wie dies in der Funktionsdefinition angegeben ist.
+<p>Wenn der Parameterwert eine Zeichenfolge ist, schließen Sie ihn in einfache Anführungszeichen ein, z. B.<br>
+<i>option='both'</i>
+<br>
+
+<h2>Weitere Funktionen</h2>
+<p>
+In diesem Dialogfeld wird Syntax für den Erweiterungsbefehl "SPSSINC MODIFY TABLES" generiert. Führen Sie folgende Syntax aus, um Hilfe für diesen Befehl anzuzeigen:
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+Die Befehlssyntax bietet folgende Möglichkeiten:
+<ul>
+<li>Angabe einer Liste von Befehlen für die Auswahl</li>
+<li>Angabe einer Liste von Tabellenuntertypen</li>
+<li>Verarbeitung sichtbarer, nicht sichtbarer oder aller Ausgabeelemente</li>
+<li>Löschen ausgewählter Elemente (anstatt sie nur auszublenden)</li>
+</ul>
+<h2>Anforderungen</h2>
+<p>
+Für dieses Dialogfeld sind das Integrations-Plug-in für Python und der Erweiterungsbefehl "SPSSINC MODIFY TABLES" erforderlich. Bei IBM SPSS Statistics
+19 und höher werden das Plug-in und der Erweiterungsbefehl zusammen mit dem Paket "Essentials for Python" installiert. Weitere Informationen finden Sie
+im Hilfesystem zu IBM SPSS Statistics unter "Core-System > Häufig gestellte Fragen" im Thema "Beziehen von Integrations-Plug-ins".
+Wenn Sie "SPSSINC MODIFY TABLES" von der SPSS Community heruntergeladen haben, befolgen Sie die Anweisungen in der zugehörigen Readme-Datei.</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+<title>Modifier les titres de la sortie</title>
+  <style type="text/css">
+
+  <!-- 
+
+  H1 {font-weight:bold; color:#006699; font-size:125%; }
+  H2 {font-weight:bold; color:#006699; font-size:110%; }
+  TABLE {font-size:100%;}
+
+  /* paragraph tags */
+  .step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+  .menuselection {margin-left:10px}
+  .bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+  .codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;}
+
+  /* inline tags */
+  .screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+  .name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+  .runinhead {font-weight: bold} 
+  .superscript {vertical-align:super; font-size:80%}
+  .subscript {vertical-align:sub; font-size:80%}
+
+
+  --> 
+  </style>
+</head>
+<body>
+<h1>Modifier les titres de la sortie</h1>
+Utilisez cette boîte de dialogue pour modifier les titres et/ou le texte dans le panneau de légende du visualiseur ou le texte des éléments eux-mêmes. Vous pouvez également modifier leur visibilité. Spécifiez les types d'éléments à traiter, les critères de sélection dans la boîte de dialogue principale et les actions à appliquer dans la sous-boîte de dialogue <i>Actions</i>.
+Les opérations sont appliquées à la fenêtre désignée du visualiseur.
+<p>
+Choisissez un ou plusieurs types d'élément à traiter. La majorité d'entre eux sont évidents.
+Les en-têtes sont les éléments de légende qui ont des enfants sous eux.
+Les titres sont les titres des éléments réels. Tous les titres de ces éléments ne peuvent pas être modifiés par cette commande. Plus précisément, les titres d'éléments Graphiques, Modèles et Arbres ne peuvent pas être modifiés. En revanche, le texte de leur légende peut être modifié.
+<p>
+Par défaut, la commande traite la sortie de la procédure immédiatement précédente (et ignore les éléments de fichier pouvant intervenir).
+Vous pouvez modifier cette option pour que tout le contenu actuel du visualiseur soit traité.
+<p>
+Seuls les éléments visibles sont traités. Vous pouvez masquer les éléments sélectionnés en choisissant <i>Masquer</i> dans la sous-boîte de dialogue.
+<h2>Critères de sélection</h2>
+Vous pouvez limiter les éléments traités en spécifiant un ou plusieurs des critères Commande, Sous-type de tableau, Titre de légende et titre d'élément.
+Les champs qui ne s'appliquent pas à un type d'objet particulier ne sont pas pris en compte pour déterminer la sélection. Seuls les éléments répondant à tous les critères applicables sont modifiés.
+<p>
+Les champs <i>Commande</i> et <i>Sous-type de tableau</i> correspondent aux identificateurs OMS pour les éléments. Vous les trouverez en faisant un clic droit sur l'entrée de l'exemple concerné ou dans <i>Utilitaires>Identificateurs OMS</i>.
+<P>
+Les <i>critères du titre de légende</i> et les <i>critères du texte de l'élément</i> peuvent être spécifiés comme correspondances exactes (casse ignorée) ou par le texte de début ou de fin. Vous pouvez également utiliser une expression régulière qui est une manière générale de décrire un motif.
+Les expressions régulières ne sont pas expliquées ici.  Le lien suivant http://www.amk.ca/python/howto/regex peut être une ressource utile.
+<p>
+<h2>Sous-boîte de dialogue Actions</h2>
+Cliquez sur le bouton <i>Actions</i> pour spécifier quoi faire avec les éléments sélectionnés.
+Si rien n'est spécifié dans Actions, la commande reste silencieuse et n'effectue aucune action.
+<h3>Texte de remplacement</h3>
+Vous pouvez entrer un nouveau texte pour la légende et/ou le titre de l'élément ou du texte dans les groupes <i>Texte de la légende</i> et <i>Texte de l'élément</i>. Il peut s'agir de texte littéral pour remplacer les anciens contenus ou d'une expression régulière de remplacement.
+<p>
+Dans le nouveau texte, vous pouvez vous inspirer de l'ancien texte et vous pouvez inclure un numéro de séquence ou une lettre. Le numéro de séquence ou la lettre est représenté par "\\0" et l'ancien texte, par "\\1". Par exemple,
+pour ajouter un numéro de séquence à l'ancien titre, vous pouvez entrer
+<br>
+Table \\0: \\1<br>
+Vous pouvez également utiliser la notation \\0 dans une expression régulière.
+<p>
+Vous pouvez utiliser une notation de formatage html ou rtf dans le texte de remplacement. Par exemple,<br>
+&lt;html&gt;&lt;i&gt;Nouveau&lt;/i&gt; titre<br>
+affiche "Nouveau" en italiques.
+<p>Dans les critères de sélection, les informations de formatage sont ignorées. La directive \\1 omet également les informations de formatage.
+<p>
+Si vous avez utilisé des parenthèses dans l'expression régulière de sélection, vous pouvez utiliser des \n références à ces groupes, n correspondant au numéro du groupe. Si aucune expression régulière n'a été utilisée pour la sélection, l'ancien titre est considéré en tant que groupe 1.
+<h3>Numérotation des séquences</h3>
+La valeur de la séquence peut être un chiffre, des lettres ou des chiffres romains. Sélectionnez la case <i>Chiffres ou lettres</i> pour choisir.
+Par défaut, les styles sont numériques et commencent à 1. Vous pouvez entrer une autre valeur de début. S'il s'agit d'une ou de plusieurs lettres (jusqu'à quatre), la séquence est composée de lettres correspondant à la casse de la première lettre.
+Si vous sélectionnez l'une des cases des chiffres romains, la séquence est en chiffres romains. Dans ce cas, si la valeur de départ est saisie, elle doit être numérique.
+<p>Pour obtenir les valeurs de séquence, vous devez cocher la case <i>Chiffres ou lettres</i> et inclure \\0 dans la légende ou le texte de l'élément.
+<h3>Insertion de sauts de page</h3>
+Si vous sélectionnez <i>Titres</i> dans le groupe <i>Objets de sortie</i> dans la boîte de dialogue principale, vous pouvez insérer un saut de page devant chaque titre correspondant aux critères de sélection. Cochez la case <i>Sauts de page</i>. Par défaut, seuls les titres au niveau de la légende en retrait d'un niveau sous l'en-tête de la procédure sont concernés.  Cochez la case <i>Tous</i> pour définir les sauts de page sur les objets du titre à tous les niveaux de la légende.
+<h3>Fonctions personnalisées</h3>
+Les programmateurs de Python et leurs amis peuvent spécifier une fonction personnalisée à appeler pour chaque objet sélectionné.  Cela permet de ne pas avoir à écrire le code pour naviguer jusqu'aux éléments concernés. Entrez la fonction à appliquer sous la forme suivante : <br>
+<i>nom du module.nom de la fonction</i><br>
+<p>Les fonctions personnalisées peuvent avoir des paramètres. Pour spécifier un ou plusieurs paramètres, mettez la liste des paramètres entre parenthèses et écrivez les noms et les valeurs des paramètres.
+Par exemple,<br>
+<i>myfunctions.writeitemtitles(file='filespec')</i>
+<br>
+appelle la fonction <i>writeitemtitles</i> dans le module <i>myfunctions</i>.
+Consultez la documentation des fonctions spécifiques pour savoir quels paramètres elles acceptent. Les noms des paramètres doivent être écrits dans la casse spécifiée dans la définition de la fonction.
+<p>Si la valeur de paramètre est une chaîne, placez-la entre guillemets simples.<br>
+<i>option='both'</i>
+<br>
+
+<h2>Fonctions supplémentaires</h2>
+<p>
+Cette boîte de dialogue génère une syntaxe pour la commande d'extension SPSSINC MODIFY TABLES. Pour afficher l'aide de cette commande, exécutez la syntaxe suivante :
+</p>
+<p class="codeblock">SPSSINC MODIFY TABLES /HELP.</p>
+La syntaxe de la commande vous permet de :
+<ul>
+<li>spécifier une liste de commandes pour la sélection ;</li>
+<li>spécifier une liste de sous-types de tableaux ;</li>
+<li>traiter les éléments visibles, invisibles ou tous les éléments de sortie ;</li>
+<li>supprimer les éléments sélectionnés au lieu de simplement les masquer.</li>
+</ul>
+<h2>Conditions requises</h2>
+<p>
+Cette boîte de dialogue requiert le plug-in d'intégration pour Python et la commande d'extension SPSSINC MODIFY TABLES. Pour IBM SPSS Statistics 19 et versions ultérieures, le plug-in et la commande d'extension sont installés avec le pack Essentials for Python. Pour plus d'informations, reportez-vous à
+Comment obtenir des plug-in d'intégration dans Système central > Questions fréquemment posées dans le système d'aide d'IBM SPSS Statistics. Si vous avez téléchargé SPSSINC MODIFY TABLES depuis la communauté SPSS, suivez les instructions dans le fichier Readme associé.
+</p>
+
+<p style="font-size:80%;">Copyright IBM Corp. 1989, 2011</p>
+</body>
+</html>
+
