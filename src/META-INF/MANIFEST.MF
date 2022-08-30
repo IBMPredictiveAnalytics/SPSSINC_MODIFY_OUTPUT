@@ -3,7 +3,7 @@ Dialog-Specs: SPSSINC_MODIFY_OUTPUT.spd
 Command-Specs: SPSSINC_MODIFY_OUTPUT.xml
 Code-Files: customoutputfunctions.py,modifyoutput.py,SPSSINC_MODIFY_OU
  TPUT.py
-Misc-Files: markdown.html
+Misc-Files: extsyntax.css,markdown.html
 Summary: Modify output titles and other aspects of objects in the View
  er
 Description: This procedure allows you to modify the text of specified
@@ -15,7 +15,7 @@ Description: This procedure allows you to modify the text of specified
  ns, selected items can be exported, and there is extra page break fun
  ctionality.
 Author: IBM SPSS
-Version: 2.0.2
+Version: 2.0.3
 Product-Version: 24
 Date: 6/9/2011
 Product-Version-Maximum: 99

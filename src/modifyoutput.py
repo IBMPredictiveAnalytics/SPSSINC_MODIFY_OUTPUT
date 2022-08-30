@@ -13,7 +13,7 @@
 
 
 
-__version__ = '1.3.2'
+__version__ = '1.3.3'
 __author__ = "SPSS, JKP"
 
 # Note: This module requires at least SPSS 17.0.0
@@ -101,16 +101,14 @@ for argument definitions."""
                 def _(msg): return msg
 
         ##debugging
-        #try:
-                #import wingdbstub
-                #if wingdbstub.debugger != None:
-                        #import time
-                        #wingdbstub.debugger.StopDebug()
-                        #time.sleep(2)
-                        #wingdbstub.debugger.StartDebug()
-                #import thread
-                #wingdbstub.debugger.SetDebugThreads({thread.get_ident(): 1}, default_policy=0)
-        #except:
+        # debugging
+                        # makes debug apply only to the current thread
+        try:
+                import wingdbstub
+                import threading
+                wingdbstub.Ensure()
+                wingdbstub.debugger.SetDebugThreads({threading.get_ident(): 1})
+        except:
                 pass
 
         #if not customfunction is None:
@@ -188,9 +186,9 @@ class ItemFilter(object):
                         raise ValueError(_("OUTLINETITLEREGEXP cannot be combined with start or end criteria on IF"))
                 if itemtitleregexp and (itemtitlestart or itemtitleend):
                         raise ValueError(_("ITEMTITLEREGEXP cannot be combined with start or end criteria on IF"))
-                self.types = set(select)
-                if len(self.types) == 0:
+                if select is None:
                         raise ValueError(_("At least one item type or ALL must be specified"))
+                self.types = set(select)
                 self.all = "all" in self.types
                 if breakbeforetitles and not ("titles" in self.types or "all" in self.types):
                         info.addrow( _("BREAKBEFORETITLES is ignored, because Title objects are not selected"))
