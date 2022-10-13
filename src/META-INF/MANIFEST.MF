@@ -1,4 +1,5 @@
 Name: SPSSINC MODIFY OUTPUT
+Display-Name: Modify Output
 Dialog-Specs: SPSSINC_MODIFY_OUTPUT.spd
 Command-Specs: SPSSINC_MODIFY_OUTPUT.xml
 Code-Files: customoutputfunctions.py,modifyoutput.py,SPSSINC_MODIFY_OU
