@@ -3,7 +3,7 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2020
+# * (C) Copyright IBM Corp. 1989, 2026
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -13,7 +13,7 @@
 
 
 
-__version__ = '1.3.3'
+__version__ = '1.3.4'
 __author__ = "SPSS, JKP"
 
 # Note: This module requires at least SPSS 17.0.0
@@ -26,11 +26,13 @@ __author__ = "SPSS, JKP"
 # 11-jun-2010 support for lightweight objects
 #  23-jun-2010 translatable proc name
 #  13-jun-2012 add control over first pagebreak
+# 10-apr-2026  fix Python upgrade breakage in using a custom function
 
 import spss, SpssClient
 from extension import floatex, _isseq
 import re, copy,locale
 import functools, inspect   # used for custom functions
+import importlib
 
 
 class ClientSession(object):
@@ -451,8 +453,10 @@ def resolvestr(afunc):
                 if len(bf) != 2:
                         raise ValueError(_("function reference not valid: %s") % f)
                 try:
-                        exec("from %s import %s" % (bf[0], bf[1]))
-                        customfunction = locals()[bf[1].strip()]
+                        ###exec("from %s import %s" % (bf[0], bf[1]))
+                        m = importlib.import_module(bf[0])
+                        ###customfunction = locals()[bf[1].strip()]
+                        customfunction = getattr(m, bf[1].strip())
                 except:
                         raise ImportError(_("Import failure.  function: %s, module: %s") % (bf[1], bf[0]))
                 argspec = inspect.getfullargspec(customfunction)[0]
